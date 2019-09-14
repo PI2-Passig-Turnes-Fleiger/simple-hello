@@ -3,13 +3,21 @@ const routes = express.Router();
 const mongoose = require('mongoose');
 
 const User = mongoose.model('User');
+const QRCode = mongoose.model('QRCode');
 
-routes.get('/', (req, res) =>{
-    User.create({
-        name: 'Robson',
-        password: 'senha'
-    })
-    res.send('<h1>Hello world!</h1>');
+routes.get('/', async (req, res) =>{
+    // const user = await User.findOne();
+    // QRCode.create({
+    //     _idUser: user._id,
+    //     permissoes: [
+    //         'cpf',
+    //         'cnpj'
+    //     ],
+    //     dateValidade: Date.now()
+    // })
+    const qrcode = await QRCode.findOne();
+    const user = await User.findById(qrcode._idUser);
+    res.json(user);
 });
 
 module.exports = routes;
