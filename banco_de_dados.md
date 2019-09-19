@@ -10,4 +10,4 @@ Nosso banco de dados em MongoDB consiste em quatro _schemas_:
 - LogEdit: usado para armazenar os campos que um usuário editou e a data desta edição;
 - AccessClient: usado para armazenar quando um cliente acessou os dados de um usuário, para acomparação da fidelidade das informações.
 
-- Voltar para [home](..)
+- Voltar para [home](index)
