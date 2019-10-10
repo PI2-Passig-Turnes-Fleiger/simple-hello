@@ -1,0 +1,8 @@
+{
+    "name": "Simple Hello",
+    "short_name": "SimpleHello",
+    "theme_color": "#2f3f4f",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "start_url": "/"
+  }
