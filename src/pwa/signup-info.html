@@ -167,40 +167,36 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Fuma?</label>
-                    <div class="row">
-                        <div class="col">
-                            <label for="InputFumanteSim">Sim</label>
-                            <input type="checkbox" id="InputFumanteSim" class="form-control">
-                        </div>
-                        <div class="col">
-                            <label for="InputFumanteNao">Nao</label>
-                            <input type="checkbox" id=InputFumanteNao class="form-control">
-                        </div>
+                    <label>Fuma cigarro?</label>
+                    <div class="form-check">
+                        <input type="checkbox" id="InputFumanteSim" class="form-check-input">
+                        <label class="form-check-label" for="InputFumanteSim">Sim</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id=InputFumanteNao class="form-check-input">
+                        <label class="form-check-label" for="InputFumanteNao">Nao</label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Bebe?</label>
-                    <div class="row">
-                        <div class="col">
-                            <label for="InputBebeSim">Sim</label>
-                            <input type="checkbox" id="InputBebeSim" class="form-control">
-                        </div>
-                        <div class="col">
-                                <label for="InputBebeNao">Não</label>
-                            <input type="checkbox" id=InputBebeNao class="form-control">
-                        </div>
+                    <label>Consome bebidas alcoólicas?</label>
+                    <div class="form-check">
+                        <input type="checkbox" id="InputBebeSim" class="form-check-input">
+                        <label class="form-check-label" for="InputBebeSim">Sim</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id=InputBebeNao class="form-check-input">
+                        <label class="form-check-label" for="InputBebeNao">Nao</label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="InputZeDroguinha">Usa drogas?</label>
+                    <label for="InputZeDroguinha">Usa drogas ilícitas?</label>
                     <input type="text" id="InputZeDroguinha" class="form-control" placeholder="Drogas, separados por ,">
                 </div>
 
                 <div class="form-group">
-                    <label for="InputRemedio">Toma algum remédio?</label>
+                    <label for="InputRemedio">Toma algum remédio regularmente?</label>
                     <input type="text" id="InputRemedio" class="form-control" placeholder="Remédios, separados por ,">
                 </div>
 
@@ -220,8 +216,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="InputTipoSanguineo">Tipo sanguíneo</label>
-                    <input type="text" id="InputTipoSanguineo" class="form-control" placeholder="Tipo sanguíneo (A+, B-, AB+)">
+                    <label for="SelectTipoSanguineo">Tipo sanguíneo</label>
+                    <select id="SelectTipoSanguieno" class="form-control">
+                        <option>Selecione</option>
+                        <option>A-</option>
+                        <option>A+</option>
+                        <option>B-</option>
+                        <option>B+</option>
+                        <option>AB-</option>
+                        <option>AB+</option>
+                        <option>O-</option>
+                        <option>O+</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -235,5 +241,6 @@
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> </body>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
 </html>
