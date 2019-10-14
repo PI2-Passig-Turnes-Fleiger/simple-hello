@@ -41,3 +41,7 @@ h1{
 .margem{
     margin-top: 40px;
 }
+
+fieldset{
+    margin-left: 30px;
+}
