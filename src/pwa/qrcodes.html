@@ -34,32 +34,58 @@
         <div class="container principal mt-5">
             <h1 class="text-center">QRCodes</h1>
             <div class="row mt-5">
-                <div class="col-sm-4 qrcode"></div>
+                <div class="col-sm-4 qrcode" data-toggle="modal" data-target="#modalQRCode"></div>
                 <div class="col-sm-8 qrcode-details d-flex flex-column justify-content-center ">
                     <b>Data criação</b>22/05/2019<br>
                     <b>Campos</b>nome, sobrenome, idade, cpf...
                 </div>                
             </div>
             <div class="row mt-5">
-                <div class="col-sm-4 qrcode"></div>
+                <div class="col-sm-4 qrcode" data-toggle="modal" data-target="#modalQRCode"></div>
                 <div class="col-sm-8 qrcode-details d-flex flex-column justify-content-center ">
                     <b>Data criação</b>22/05/2019<br>
                     <b>Campos</b>nome, sobrenome, idade, cpf...
                 </div>                
             </div>
             <div class="row mt-5">
-                <div class="col-sm-4 qrcode"></div>
+                <div class="col-sm-4 qrcode" data-toggle="modal" data-target="#modalQRCode"></div>
                 <div class="col-sm-8 qrcode-details d-flex flex-column justify-content-center ">
                     <b>Data criação</b>22/05/2019<br>
                     <b>Campos</b>nome, sobrenome, idade, cpf...
                 </div>                
             </div>
             <div class="row mt-5">
-                <div class="col-sm-4 qrcode"></div>
+                <div class="col-sm-4 qrcode" data-toggle="modal" data-target="#modalQRCode"></div>
                 <div class="col-sm-8 qrcode-details d-flex flex-column justify-content-center ">
                     <b>Data criação</b>22/05/2019<br>
                     <b>Campos</b>nome, sobrenome, idade, cpf...
                 </div>                
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalQRCode" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold pl-4" style="color: #2f3f4f">Nome do usuário</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3 text-center">
+                        <div class="container centrado">
+                            <div class="col-sm-4 qrcode"></div> 
+                        </div>
+                    </div>
+                    <div class="modal-footer text-center">
+                        <div class="col">
+                            <b>Data criação:</b> 22/05/2019<br>
+                            <b>Campos:</b> nome, sobrenome, idade, cpf...
+                        </div>
+                            
+                    </div>
+                </div>
             </div>
         </div>
         
