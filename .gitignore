@@ -1,3 +1,4 @@
 *.lock
 _site/
 node_modules/
+banco.json
