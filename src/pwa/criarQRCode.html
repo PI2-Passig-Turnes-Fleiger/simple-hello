@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SimpleHello</title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/estilo.css" rel="stylesheet">
+        <link rel="manifest" href="manifest.json">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="index.html">HOME <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="criarQRCode.html">CRIAR QR CODE</a>
+                    <a class="nav-item nav-link" href="qrcodes.html">SEUS QR CODES</a>
+                    <a class="nav-item nav-link">SAIR</a>
+                </div>
+            </div>
+            <a class="navbar-brand" href="#">SIMPLE HELLO</a>
+        </nav>
+
+
+        <div class="container formularioMaior">
+            <h1 class="text-black-50 text-center margem"><strong>Criar QR Code</strong></h1>
+            <form class="text-center">
+                <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#modalModelo">Escolher um modelo</button>
+                    <fieldset class="text-left">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkNome">
+                            <label class="form-check-label" for="checkNome">Nome</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkSobrenome">
+                            <label class="form-check-label" for="checkSobrenome">Sobrenome</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkRG">
+                            <label class="form-check-label" for="checkRG">RG</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkOrgao">
+                            <label class="form-check-label" for="checkOrgao">Órgão expedidor da identidade</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDataExp">
+                            <label class="form-check-label" for="checkDataExp">Data de expedição da identidade</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="chekCPF">
+                            <label class="form-check-label" for="chekCPF">CPF</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkCNPJ">
+                            <label class="form-check-label" for="checkCNPJ">CNPJ</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkNomePai">
+                            <label class="form-check-label" for="checkNomePai">Nome do pai</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkNomeMae">
+                            <label class="form-check-label" for="checkNomeMae">Nome da mãe</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDataNasc">
+                            <label class="form-check-label" for="checkDataNasc">Data de nascimento</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkLocalNasc">
+                            <label class="form-check-label" for="checkLocalNasc">Local de nascimento</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkEstadoCiv">
+                            <label class="form-check-label" for="checkEstadoCiv">Estado civil</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkTelefone">
+                            <label class="form-check-label" for="checkTelefone">Telefone</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkEmail">
+                            <label class="form-check-label" for="checkEmail">Email</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkEndereco">
+                            <label class="form-check-label" for="checkEndereco">Endereço</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkSexo">
+                            <label class="form-check-label" for="checkSexo">Sexo</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkRaca">
+                            <label class="form-check-label" for="checkRaca">Raça</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkNacionalidade">
+                            <label class="form-check-label" for="checkNacionalidade">Nacionalidade</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDeficiencia">
+                            <label class="form-check-label" for="checkDeficiencia">Deficiência</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkTrabalho">
+                            <label class="form-check-label" for="checkTrabalho">Trabalho</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkRenda">
+                            <label class="form-check-label" for="checkRenda">Renda familiar</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDependentes">
+                            <label class="form-check-label" for="checkDependentes">Dependentes</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkPis">
+                            <label class="form-check-label" for="checkPis">Pis/Pasep</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkPlano">
+                            <label class="form-check-label" for="checkPlano">Plano de saúde</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkNumPlano">
+                            <label class="form-check-label" for="checkNumPlano">Número do cartão do plano</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkVencimento">
+                            <label class="form-check-label" for="checkVencimento">Vencimento do plano de saúde</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkNicotina">
+                            <label class="form-check-label" for="checkNicotina">Uso de cigarro</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkAlcool">
+                            <label class="form-check-label" for="checkAlcool">Uso de álcool</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkIlicitas">
+                            <label class="form-check-label" for="checkIlicitas">Uso de drogas ilícitas</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkRemedio">
+                            <label class="form-check-label" for="checkRemedio">Uso regular de remédios</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkAlergias">
+                            <label class="form-check-label" for="checkAlergias">Alergias</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkTipoSanguineo">
+                            <label class="form-check-label" for="checkTipoSanguineo">Tipo sanguíneo</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkBio">
+                            <label class="form-check-label" for="checkBio">Bio</label>
+                        </div>
+                    </fieldset>
+                <button type="submit" class="btn btn-primary mb-4 margem">Criar QR Code</button>
+            </form> 
+        </div>
+
+        <div class="modal fade" id="modalModelo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold pl-4" style="color: #2f3f4f">Escolha o padrão</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3 text-center d-flex flex-column">
+                        <button type="button" class="btn btn-primary mb-4">Clínicas</button>
+                        <button type="button" class="btn btn-primary mb-4">Dados contratuais e matrículas</button>
+                        <button type="button" class="btn btn-primary mb-4">Portarias</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> </body>
+</html>
