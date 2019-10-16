@@ -12,7 +12,7 @@ module.exports = {
             return res.status(403).send('Senhas não conferem!');
         }
 
-        if(await User.findOne({ cpf })){
+        if(await User.findOne({ email })){
             return res.status(403).send('Usuário já existe!');
         }
 
