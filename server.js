@@ -9,7 +9,7 @@ const app = express();
 
 
 mongoose.connect(
-    `mongodb+srv://${usuario}:${senha}@simple-hello-3ozla.azure.mongodb.net/simpleHello?retryWrites=true&w=majority`,
+    `mongodb://localhost:27017/simpleHello`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
