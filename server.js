@@ -1,11 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const requireDir = require('require-dir');
 
 const { usuario, senha } = require('./src/banco.json');
 
 const app = express();
-app.use(express.json());
+
 
 mongoose.connect(
     `mongodb+srv://${usuario}:${senha}@simple-hello-3ozla.azure.mongodb.net/simpleHello?retryWrites=true&w=majority`,
@@ -17,6 +18,8 @@ mongoose.connect(
 // Importando todos os models
 requireDir('./src/models');
 
+app.use(cors());
+app.use(express.json());
 // Rotas recebidas do arquivo routes.js
 app.use('/', require('./src/routes'));
 
