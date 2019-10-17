@@ -17,7 +17,7 @@ module.exports = {
         }
 
 
-        const user = await User.create({ nome, sobrenome, senha, tipo: 'pf', cpf })
+        const user = await User.create({ nome, sobrenome, senha, tipo: 'pf', cpf, email })
         
         return res.json(user);
     }
