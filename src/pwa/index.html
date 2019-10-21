@@ -20,7 +20,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="index.html">HOME <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active" href="/">HOME <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" data-toggle="modal" data-target="#modalLoginForm">FAÇA LOGIN</a>
                     <a class="nav-item nav-link" href="signup.html">CADASTRE-SE</a>
                 </div>
@@ -87,8 +87,8 @@
                     <div class="modal-body mx-3">
                         
                         <div class="md-form mb-2 ali">
-                            <label data-error="wrong" data-success="right" for="defaultForm-email" class="text-center w-100">Email</label>
-                            <input type="email" id="defaultForm-email" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="emailLogin" class="text-center w-100">Email</label>
+                            <input type="email" id="emailLogin" class="form-control validate">
                         </div>
 
                     </div>
@@ -99,51 +99,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="modalCadastroForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h4 class="modal-title w-100 font-weight-bold pl-4" style="color: #2f3f4f">CADASTRAR</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body mx-3">
-                        <div class="md-form mb-2 ali">
-                            <label data-error="wrong" data-success="right" for="defaultForm-nome" class="text-center w-100">Nome Completo</label>
-                            <input type="text" id="defaultForm-email" class="form-control validate">
-                        </div>
-                        
-                        <div class="md-form mb-2 ali">
-                            <label data-error="wrong" data-success="right" for="defaultForm-cpf" class="text-center w-100">CPF</label>
-                            <input type="text" id="defaultForm-cpf" class="form-control validate">
-                        </div>
-                        
-                        <div class="md-form mb-2 ali">
-                            <label data-error="wrong" data-success="right" for="defaultForm-email" class="text-center w-100">Email</label>
-                            <input type="email" id="defaultForm-email" class="form-control validate">
-                        </div>
-                        
-
-                        <div class="md-form mb-4">                        
-                            <label data-error="wrong" data-success="right" for="defaultForm-pass" class="text-center w-100">Senha</label>
-                            <input type="password" id="defaultForm-pass" class="form-control validate">
-                        </div>
-                        
-                        <div class="md-form mb-4">                        
-                            <label data-error="wrong" data-success="right" for="defaultForm-pass2" class="text-center w-100">Confirmar Senha</label>
-                            <input type="password" id="defaultForm-pass2" class="form-control validate">
-                        </div>
-
-                    </div>
-                    <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-default">Cadastrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <script src="./main.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> </body>
