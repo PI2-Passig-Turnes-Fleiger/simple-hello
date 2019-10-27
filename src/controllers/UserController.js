@@ -37,7 +37,7 @@ module.exports = {
     },
 
     verifyJWT(req, res, next){
-        const token = req.headers['access-token'];
+        const token = req.headers['accesstoken'];
 
         if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
 

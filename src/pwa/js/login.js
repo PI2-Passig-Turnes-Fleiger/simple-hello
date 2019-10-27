@@ -4,7 +4,8 @@ async function logar(){
 
     try{
         const response = await api.post('/login', { email, senha });
-        localStorage.setItem('access-token', response.data.token);
+        localStorage.setItem('accessToken', response.data.token);
+        document.location.href = '/'
     } catch(err){
         const {data} = err.response
         console.log('erro:', data);
