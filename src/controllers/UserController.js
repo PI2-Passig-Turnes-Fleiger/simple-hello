@@ -22,8 +22,10 @@ module.exports = {
         const { email, senha } = req.body;
 
         const user = await User.findOne({ email });
-        if(!user || user.senha !== senha)
-            res.status(500).send('Login inválido!');
+        if(!user)
+            res.status(401).send('une');
+        else if(user.senha !== senha)
+            res.status(401).send('eas');
         else{
             const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: 3000 });
             res.json({ auth: true, token });

@@ -22,4 +22,4 @@ app.use(express.urlencoded({ extended: false }));
 // Rotas recebidas do arquivo routes.js
 app.use('/', require('./src/routes'));
 
-app.listen(3003);
+app.listen(1234);

@@ -5,7 +5,7 @@ const UserController = require('./controllers/UserController');
 
 routes.post('/users', UserController.store);
 
-routes.get('/login', UserController.login);
+routes.post('/login', UserController.login);
 routes.get('/logout', UserController.verifyJWT, UserController.logout);
 
 
