@@ -1,12 +1,10 @@
+require('dotenv-safe').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const requireDir = require('require-dir');
 
-const { usuario, senha } = require('./src/banco.json');
-
 const app = express();
-
 
 mongoose.connect(
     `mongodb://localhost:27017/simpleHello`,
@@ -20,7 +18,8 @@ requireDir('./src/models');
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 // Rotas recebidas do arquivo routes.js
 app.use('/', require('./src/routes'));
 
-app.listen(1234);
+app.listen(3003);
