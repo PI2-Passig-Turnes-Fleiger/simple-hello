@@ -1,4 +1,9 @@
 const page = location.href.split("/").slice(-1)[0];
+const requiresLogin = [
+    'criarQRCode.html',
+    'qrcodes.html',
+    'signup-info.html'
+];
 
 if('serviceWorker' in navigator && page === ""){
     window.addEventListener('load', () => {
@@ -11,8 +16,13 @@ if('serviceWorker' in navigator && page === ""){
 }
 
 const accessToken = localStorage.getItem('accessToken');
-const navbar = document.getElementById('navbar')
+if(!accessToken && requiresLogin.includes(page))
+    document.location.href = '/';
+
+const navbar = document.getElementById('navbar');
+
 updateNav(accessToken);
+
 function updateNav(accessToken){
     if(accessToken){
         navbar.innerHTML = `
@@ -48,9 +58,12 @@ function updateNav(accessToken){
     }
 }
 
-document.getElementById('logout').addEventListener('click', async () => {
-    const res = await api.get('/logout', { headers: { accessToken } });
+const logout = document.getElementById('logout');
+if(logout){
+    logout.addEventListener('click', async () => {
+        const res = await api.get('/logout', { headers: { accessToken } });
 
-    localStorage.removeItem('accessToken')
-    document.location.href = '/';
-});
+        localStorage.removeItem('accessToken')
+        document.location.href = '/';
+    });
+}

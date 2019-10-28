@@ -7,7 +7,7 @@ async function logar(){
         localStorage.setItem('accessToken', response.data.token);
         document.location.href = '/'
     } catch(err){
-        const {data} = err.response
+        const { data } = err.response
         console.log('erro:', data);
     }
 }
