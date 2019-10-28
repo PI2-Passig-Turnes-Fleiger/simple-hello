@@ -13,22 +13,10 @@
         <link rel="manifest" href="manifest.json">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="/">HOME <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="/criarQRCode.html">CRIAR QR CODE</a>
-                    <a class="nav-item nav-link" href="/qrcodes.html">SEUS QR CODES</a>
-                    <a class="nav-item nav-link" href="#">SAIR</a>
-                </div>
-            </div>
-
-            <a class="navbar-brand" href="#">SIMPLE HELLO</a>
         </nav>
+
         <div class="container formulario">
             <form class="text-center">
                 <div class="img-profile mb-3"></div>
@@ -242,5 +230,13 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script src="./main.js"></script>
+
+        <!-- Importando o Axios e o arquivo javascript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+        <script type="text/javascript" src="./js/services/api.js"></script>
+        <script type="text/javascript" src="./js/login.js"></script>
+        <script type="text/javascript" src="./js/signup.js"></script>
     </body>
 </html>
