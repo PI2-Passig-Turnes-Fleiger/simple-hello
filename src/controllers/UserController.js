@@ -27,25 +27,8 @@ module.exports = {
         else if(user.senha !== senha)
             res.status(401).send('eas');
         else{
-            const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: 3000 });
+            const token = jwt.sign({ _id: user._id }, process.env.SECRET);
             res.json({ auth: true, token });
         }
-    },
-
-    logout(req, res){
-        res.json({ auth: false, token: null});
-    },
-
-    verifyJWT(req, res, next){
-        const token = req.headers['accesstoken'];
-
-        if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
-
-        jwt.verify(token, process.env.SECRET, (err, decoded) => {
-            if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
-
-            req.userId = decoded._id;
-            next();
-        });
     }
 };

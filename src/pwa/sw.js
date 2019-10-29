@@ -8,7 +8,8 @@ const staticAssets = [
     './js/services/api.js',
     './js/modelos.js',
     './js/signup.js',
-    './js/login.js'
+    './js/login.js',
+    './js/criarQRCode.js'
 ];
 
 self.addEventListener('install', async event => {

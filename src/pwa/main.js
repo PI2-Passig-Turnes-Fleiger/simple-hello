@@ -61,8 +61,6 @@ function updateNav(accessToken){
 const logout = document.getElementById('logout');
 if(logout){
     logout.addEventListener('click', async () => {
-        const res = await api.get('/logout', { headers: { accessToken } });
-
         localStorage.removeItem('accessToken')
         document.location.href = '/';
     });
