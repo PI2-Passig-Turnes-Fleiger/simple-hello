@@ -23,6 +23,7 @@ routes.post('/users', UserController.store);
 routes.post('/login', UserController.login);
 
 routes.post('/qrcodes', verifyJWT, QRController.store);
+routes.get('/qrcodes', verifyJWT, QRController.index);
 
 
 module.exports = routes;

@@ -10,5 +10,11 @@ module.exports = {
         const qrcode = await QRCode.create({ permissoes, _idUser: userId });
 
         res.status(201).json(qrcode);
+    },
+
+    async index(req, res){
+        const { userId } = req;
+        const codes = await QRCode.find({ _idUser: userId })
+        res.json(codes);
     }
 };
