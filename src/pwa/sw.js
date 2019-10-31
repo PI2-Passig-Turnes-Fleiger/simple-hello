@@ -28,11 +28,20 @@ self.addEventListener('fetch', event => {
     }
 });
 
+/**
+ * Função para tentar buscar algo primeiro pelo cache e, caso não exista, buscar pela rede.
+ * 
+ * @param {string} req - Algo a ser encontrado
+ */
 async function cacheFirst(req){
     const cachedResponse = await caches.match(req);
     return cachedResponse || fetch(req);
 }
 
+/**
+ * Função para tentar buscar algo primeiro na rede e, caso não tenha conexão, tentar buscar em cache.
+ * @param {string} req - Algo a ser encontrado
+ */
 async function networkFirst(req){
     const cache = await caches.open('simple-hello-dynamic');
     try{

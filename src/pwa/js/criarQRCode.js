@@ -33,6 +33,10 @@ const ids = [
     'Bio'
 ];
 
+/**
+ * Responsável por criar um qr code do usuário, percorre um array de todos os ids de checkboxes e verifica quais estão selecionados. Caso estejam,
+ * a é concatenada no array de permissões. No fim da checagem, é feito o post na rota /qrcodes do servidor.
+ */
 async function criaQRCode(){
     const permissoes = [];
     const accesstoken = localStorage.getItem('accessToken');

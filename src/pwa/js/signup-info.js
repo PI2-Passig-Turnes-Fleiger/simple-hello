@@ -1,3 +1,6 @@
+/**
+ * Responsável por atualizar os dados de um usuário. A função busca todos os dados do formulário na página e os envia para o servidor, com um post na rota /userInfo
+ */
 async function atualizaUsuario() {
     const sexo = document.getElementById('SelectSexo').value;
     const raca = document.getElementById('InputRaca').value;

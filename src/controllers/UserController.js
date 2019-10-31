@@ -4,6 +4,12 @@ const jwt = require('jsonwebtoken');
 const User = mongoose.model('User');
 
 module.exports = {
+    /**
+     * Responsável por criar um usuário. Lê da requisição o nome, sobrenome, email, cpf, senha e confirmação de senha e cria um novo usuário no banco de dados.
+     * 
+     * @param {*} req - Requisição recebida pelo servidor
+     * @param {*} res - Resposta a ser dada
+     */
     async store(req, res){
         const { nome, sobrenome, email, cpf, senha, confirmar_senha } = req.body;
         if(!nome || !sobrenome || !email || !cpf || !senha || !confirmar_senha)
@@ -18,6 +24,13 @@ module.exports = {
         return res.status(201).json(user);
     },
 
+    /**
+     * Responsável por autenticar um usuário. Recebe na requisição o email e senha do usuário e o busca no banco, respondendo com erro
+     * caso ele não exista ou caso a senha esteja errada e respondendo com sucesso com o JWT de autenticação.
+     * 
+     * @param {*} req - Requisição recebida pelo servidor
+     * @param {*} res - Resposta a ser dada
+     */
     async login(req, res){
         const { email, senha } = req.body;
 
@@ -32,6 +45,13 @@ module.exports = {
         }
     },
 
+    /**
+     * Responsável por atualizar as informações do usuário. Pega todas as informações do corpo da req e atualiza o usuário no banco de dados.
+     * O id do usuário é recebido através do JWT.
+     * 
+     * @param {*} req - Requisição recebida pelo servidor
+     * @param {*} res - Resposta a ser dada
+     */
     async info(req, res){
         const {sexo, raca, nacionalidade, deficiencia, trabalho, renda, dependentes, rg, orgaoExpedidor, dataExpedicao, pisPasep, nomePai, nomeMae,dataNascimento,localNascimento, estadoCivil, telefone, email, cep, numero, complemento, planoDeSaude, numeroCartaoPlano, vencimentoCartaoPlano, cigarro,
             alcool, drogasIlicitas, remedios, medicamentos, alimentos, equipamento, tipoSanguineo, bio} = req.body;

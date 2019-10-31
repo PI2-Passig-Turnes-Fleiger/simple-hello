@@ -23,6 +23,11 @@ const navbar = document.getElementById('navbar');
 
 updateNav(accessToken);
 
+/**
+ * Atualiza o navbar para as versões de "logado" ou "deslogado", tendo diferentes funcionalidades.
+ * 
+ * @param {string} accessToken - JWT de acesso do usuário, podendo ser null ou undefined
+ */
 function updateNav(accessToken){
     if(accessToken){
         navbar.innerHTML = `

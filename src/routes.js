@@ -5,6 +5,14 @@ const routes = express.Router();
 const UserController = require('./controllers/UserController');
 const QRController = require('./controllers/QRController');
 
+/**
+ * Função usada para verificar a autenticação de um usuário. Ela deve ser usada em todas as rotas que precisam de autenticação.
+ * Além de verificar o token, ela coloca decodifica o mesmo e insere o ID do usuário na requisição, para uso posterior.
+ * 
+ * @param {*} req - Requisição recebida pelo node
+ * @param {*} res - Resposta para enviar caso a autenticação falhe
+ * @param {*} next - Próxima função a ser chamada
+ */
 function verifyJWT(req, res, next){
     const token = req.headers['accesstoken'];
 

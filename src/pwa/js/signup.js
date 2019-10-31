@@ -1,3 +1,6 @@
+/**
+ * Responsável por registrar um usuário no backend. Primeiramente busca todos os dados do formulário na página e, em seguida, envia um post para o servidor.
+ */
 async function registraUsuario(){
     const nome = document.getElementById('InputNome').value;
     const sobrenome = document.getElementById('InputSobrenome').value;

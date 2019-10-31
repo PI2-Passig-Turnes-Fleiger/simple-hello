@@ -6,6 +6,11 @@
     </div>                
 </div> */
 
+/**
+ * Responsável por buscar os qr codes de um usuário no servidor e exibir na página. Primeiramente a função busca o token de acesso do usuário,
+ * em seguida ela faz um get na rota /qrcodes com este token de acesso. O próprio servidor é responsável por decodificar o token e descobrir quem é
+ * o usuário e retornar os qr codes corretos. O array de qr codes é mapeado e mostrado em html na página.
+ */
 async function buscaCodigos(){
     const accessToken = localStorage.getItem('accessToken');
     const { data } = await api.get('/qrcodes', { headers: { accessToken } });
