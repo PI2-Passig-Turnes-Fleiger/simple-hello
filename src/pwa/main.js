@@ -34,6 +34,7 @@ function updateNav(accessToken){
                     <a class="nav-item nav-link active" href="/">HOME <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="/criarQRCode.html">CRIAR QR CODE</a>
                     <a class="nav-item nav-link" href="/qrcodes.html">SEUS QR CODES</a>
+                    <a class="nav-item nav-link" href="/signup-info.html">VOCÊ</a>
                     <a class="nav-item nav-link" href="#" id="logout">SAIR</a>
                 </div>
             </div>

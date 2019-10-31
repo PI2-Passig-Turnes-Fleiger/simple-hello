@@ -19,6 +19,7 @@ function verifyJWT(req, res, next){
 }
 
 routes.post('/users', UserController.store);
+routes.post('/usersInfo', verifyJWT, UserController.info);
 
 routes.post('/login', UserController.login);
 
