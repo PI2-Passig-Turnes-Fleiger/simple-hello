@@ -1,51 +1,56 @@
 /**
  * Responsável por atualizar os dados de um usuário. A função busca todos os dados do formulário na página e os envia para o servidor, com um post na rota /userInfo
  */
-async function atualizaUsuario() {
-    const sexo = document.getElementById('SelectSexo').value;
-    const raca = document.getElementById('InputRaca').value;
-    const nacionalidade = document.getElementById('InputNac').value;
-    const deficiencia = document.getElementById('InputDeficiencia').value;
-    const trabalho = document.getElementById('InputTrabalho').value;
-    const renda = document.getElementById('InputRenda').value;
-    const dependentes = document.getElementById('InputDependentes').value;
-    //const pictureFilename = document.getElementById('').value;
-    const rg = document.getElementById('InputRG').value;
-    const orgaoExpedidor = document.getElementById('InputOrgao').value;
-    const dataExpedicao = document.getElementById('InputDataExp').value;
-    const pisPasep = document.getElementById('InputPis').value;
-    const nomePai = document.getElementById('InputPai').value;
-    const nomeMae = document.getElementById('InputMae').value;
-    const dataNascimento = document.getElementById('InputDataNasc').value;
-    const localNascimento = document.getElementById('InputLocNasc').value;
-    const estadoCivil = document.getElementById('SelectEstCiv').value;
-    const telefone = document.getElementById('InputTelefone').value;
-    const email = document.getElementById('InputEmail').value;
-    const cep = document.getElementById('InputCEP').value;
-    const numero = document.getElementById('InputNumero').value;
-    const complemento = document.getElementById('InputComplemento').value;
-    const planoDeSaude = document.getElementById('InputPlanoSau').value;
-    const numeroCartaoPlano = document.getElementById('InputNumeroPlano').value;
-    const vencimentoCartaoPlano = document.getElementById('InputVencimentoPlano').value;
-    const cigarro = document.getElementById('InputFumante').value;
-    const alcool = document.getElementById('InputBebe').value;
-    const drogasIlicitas = document.getElementById('InputZeDroguinha').value;
-    const remedios = document.getElementById('InputRemedio').value;
-    const medicamentos = document.getElementById('InputRemedioAlergia').value;
-    const alimentos = document.getElementById('InputAlimentoAlergia').value;
-    const equipamento = document.getElementById('InputEquipamentoAlergia').value;
-    const tipoSanguineo = document.getElementById('SelectTipoSanguieno').value;
-    const bio = document.getElementById('InputBio').value;
+
+$( "#signup-info" ).submit(function( e ) {
+
+    let x = $( this ).serializeArray();
+    var array = {};
+
+    $.map(x, function(n, i){
+        if(n['value'] != "" && n['value'] != "undefined") {
+            if(n['name'] == "renda"){
+                n['value'] = converteMoedaFloat(n['value']);
+            }
+            array[n['name']] = n['value'];
+        }
+    });
+
+    atualizaUsuario(array);
+})
+
+
+async function atualizaUsuario(x) {
     let res;
     try {
-        res = await api.post('/usersInfo', {sexo, raca, nacionalidade, deficiencia, trabalho, renda, dependentes, rg, orgaoExpedidor, dataExpedicao, pisPasep,
-            nomePai, nomeMae,dataNascimento,localNascimento, estadoCivil, telefone, email, cep, numero, complemento, planoDeSaude, numeroCartaoPlano, vencimentoCartaoPlano, cigarro,
-            alcool, drogasIlicitas, remedios, medicamentos, alimentos, equipamento, tipoSanguineo, bio}, { headers: { accessToken } } );
+        res = await api.post('/usersInfo', x, { headers: { accessToken } } );
     } catch (err) {
         alert('Erro!' + err );
         return;
     }
     alert("Informações atualizadas com sucesso!")
-    //window.location.href = '/';
 
 }
+
+async function buscaInfos() {
+    const accessToken = localStorage.getItem('accessToken');
+    const { data } = await api.get('/usersInfo', { headers: { accessToken } });
+    const dados = data[0];
+    document.getElementById("nome_pessoa").innerHTML = data[0].nome + " " +
+        data[0].sobrenome;
+    Object.keys(dados).forEach(function(item){
+        let elemento = document.getElementsByName(item)[0];
+        if(elemento) {
+            if(item == "renda"){
+                dados[item] = converteFloatMoeda(dados[item])
+            }
+            if(item == "dataNascimento" || item == "dataExpedicao" || item == "vencimentoCartaoPlano"){
+                let data = formataData(dados[item])
+                dados[item] = data;
+            }
+            elemento.value = dados[item];
+        }
+    });
+}
+
+buscaInfos()

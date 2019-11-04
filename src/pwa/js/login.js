@@ -2,6 +2,11 @@
  * Responsável por autenticar um usuário no servidor. Ela busca o email e a senha do usuário e envia um post na rota /login,
  * recebendo o token e o guardando no localStorage do navegador para uso posterior
  */
+
+$( "#login" ).submit(function( event ) {
+    logar();
+})
+
 async function logar(){
     const email = document.getElementById('loginEmail').value;
     const senha = document.getElementById('loginSenha').value;
@@ -16,4 +21,4 @@ async function logar(){
     }
 }
 
-document.getElementById('loginEntrar').addEventListener('click', logar);
+//document.getElementById('loginEntrar').addEventListener('click', logar);

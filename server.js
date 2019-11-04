@@ -10,7 +10,8 @@ mongoose.connect(
     `mongodb://localhost:27017/simpleHello`,
     {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useFindAndModify: false
     }
 );
 // Importando todos os models

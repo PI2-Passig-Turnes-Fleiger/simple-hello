@@ -1,235 +1,244 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>SimpleHello</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SimpleHello</title>
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/estilo.css" rel="stylesheet">
-        <link rel="manifest" href="manifest.json">
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/estilo.css" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
 
-        </nav>
+</nav>
 
-        <div class="container formulario">
-            <form class="text-center" onSubmit="return false" id="signup-info">
-                <div class="img-profile mb-3"></div>
-                <h2>NOME DA PESSOA</h2>
+<div class="container formulario">
+    <form class="text-center" onSubmit="return false" id="signup-info">
+        <div class="img-profile mb-3"></div>
+        <h2 id="nome_pessoa"></h2>
 
-                <div class="form-group">
-                    <label for="SelectSexo">Sexo</label>
-                    <select id="SelectSexo" class="form-control">
-                        <option value="">Selecione</option>
-                        <option value="m">Masculino</option>
-                        <option value="f">Feminino</option>
-                        <option value="o">Outros</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="InputDataNasc">Data de nascimento</label>
-                    <input type="date" id="InputDataNasc" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputLocNasc">Local de nascimento</label>
-                    <input type="text" id="InputLocNasc" class="form-control" placeholder="Local de nascimento">
-                </div>
-
-                <div class="form-group">
-                    <label for="SelectEstCiv">Estado civil</label>
-                    <select id="SelectEstCiv" class="form-control">
-                        <option value="">Selecione</option>
-                        <option value="solteiro">Solteiro(a)</option>
-                        <option value="casado">Casado(a)</option>
-                        <option value="divorciado">Divorciado(a)</option>
-                        <option value="viuvo">Viúvo(a)</option>
-                        <option value="separado">Separado(a)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="InputMae">Nome da mãe</label>
-                    <input type="text" id="InputMae" class="form-control" placeholder="Nome da mãe">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputPai">Nome do pai</label>
-                    <input type="text" id="InputPai" class="form-control" placeholder="Nome do pai">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputTelefone">Telefone</label>
-                    <input type="text" id="InputTelefone" class="form-control" placeholder="Telefone">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputEmail">Email</label>
-                    <input type="text" id="InputEmail" class="form-control" placeholder="Email">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputCEP">CEP</label>
-                    <input type="text" id="InputCEP" class="form-control" placeholder="CEP">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputNumero">Número</label>
-                    <input type="number" id="InputNumero" class="form-control" placeholder="Numero">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputComplemento">Complemento</label>
-                    <input type="text" id="InputComplemento" class="form-control" placeholder="Complemento">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputRaca">Raça (autodeclarado)</label>
-                    <input type="text" id="InputRaca" class="form-control" placeholder="Raça">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputNac">Nacionalidade</label>
-                    <input type="text" id="InputNac" class="form-control" placeholder="Nacionalidade">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputDeficiencia">Deficiências</label>
-                    <input type="text" id="InputDeficiencia" class="form-control" placeholder="Deficiências (separados por ,)">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputTrabalho">Trabalho</label>
-                    <input type="text" id="InputTrabalho" class="form-control" placeholder="Trabalho">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputRenda">Renda familiar</label>
-                    <input type="number" id="InputRenda" class="form-control" placeholder="Renda familiar">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputDependentes">Número de dependentes</label>
-                    <input type="number" id="InputDependentes" class="form-control" placeholder="Número de dependentes">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputRG">RG</label>
-                    <input type="text" id="InputRG" class="form-control" placeholder="RG">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputOrgao">Órgão expedidor da identidade</label>
-                    <input type="text" id="InputOrgao" class="form-control" placeholder="Órgão expedidor">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputDataExp">Data de expedição da identidade</label>
-                    <input type="date" id="InputDataExp" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputPis">Pis/Pasep</label>
-                    <input type="text" id="InputPis" class="form-control" placeholder="Pis/Pasep">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputPlanoSau">Plano de saúde</label>
-                    <input type="text" id="InputPlanoSau" class="form-control" placeholder="Plano de saúde (Unimed, SC Saúde)">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputNumeroPlano">Número do cartão do plano</label>
-                    <input type="text" id="InputNumeroPlano" class="form-control" placeholder="Número do cartão do plano">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputVencimentoPlano">Vencimento do cartão do plano</label>
-                    <input type="date" id="InputVencimentoPlano" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label>Fuma cigarro?</label>
-                    <select id="InputFumante" class="form-control">
-                        <option value="">Selecione</option>
-                        <option value="s">Sim</option>
-                        <option value="n">Não</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Consome bebidas alcoólicas?</label>
-                    <select id="InputBebe" class="form-control">
-                        <option value="">Selecione</option>
-                        <option value="s">Sim</option>
-                        <option value="n">Não</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="InputZeDroguinha">Usa drogas ilícitas?</label>
-                    <input type="text" id="InputZeDroguinha" class="form-control" placeholder="Drogas, separados por ,">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputRemedio">Toma algum remédio regularmente?</label>
-                    <input type="text" id="InputRemedio" class="form-control" placeholder="Remédios, separados por ,">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputRemedioAlergia">Tem alergia a algum medicamento?</label>
-                    <input type="text" id="InputRemedioAlergia" class="form-control" placeholder="Medicamentos">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputAlimentoAlergia">Tem alergia a algum alimento?</label>
-                    <input type="text" id="InputAlimentoAlergia" class="form-control" placeholder="Alimentos">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputEquipamentoAlergia">Tem alergia a algum equipamento médico?</label>
-                    <input type="text" id="InputEquipamentoAlergia" class="form-control" placeholder="Equipamentos (agulha, por exemplo)">
-                </div>
-
-                <div class="form-group">
-                    <label for="SelectTipoSanguineo">Tipo sanguíneo</label>
-                    <select id="SelectTipoSanguieno" class="form-control">
-                        <option value="">Selecione</option>
-                        <option value="A-">A-</option>
-                        <option value="A+">A+</option>
-                        <option value="B-">B-</option>
-                        <option value="B+">B+</option>
-                        <option value="AB">AB-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="O-">O-</option>
-                        <option value=">O+">O+</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="InputBio">Escreva o que quiser</label>
-                    <input type="text" id="InputBio" class="form-control" placeholder="Bio">
-                </div>
-
-                <button onclick="atualizaUsuario()" type="submit" class="btn btn-primary mb-4">Salvar</button>
-            </form>
+        <div class="form-group">
+            <label for="SelectSexo">Sexo</label>
+            <select name="sexo" id="SelectSexo" class="form-control">
+                <option value="">Selecione</option>
+                <option value="m">Masculino</option>
+                <option value="f">Feminino</option>
+                <option value="o">Outros</option>
+            </select>
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <div class="form-group">
+            <label for="InputDataNasc">Data de nascimento</label>
+            <input name="dataNascimento" type="date" id="InputDataNasc" class="form-control">
+        </div>
 
-        <script src="./main.js"></script>
+        <div class="form-group">
+            <label for="InputLocNasc">Local de nascimento</label>
+            <input name="localNascimento" type="text" id="InputLocNasc" class="form-control" placeholder="Local de nascimento">
+        </div>
 
-        <!-- Importando o Axios e o arquivo javascript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-        <script type="text/javascript" src="./js/services/api.js"></script>
-        <script type="text/javascript" src="./js/signup-info.js"></script>
-    </body>
+        <div class="form-group">
+            <label for="SelectEstCiv">Estado civil</label>
+            <select name="estadoCivil" id="SelectEstCiv" class="form-control">
+                <option value="">Selecione</option>
+                <option value="solteiro">Solteiro(a)</option>
+                <option value="casado">Casado(a)</option>
+                <option value="divorciado">Divorciado(a)</option>
+                <option value="viuvo">Viúvo(a)</option>
+                <option value="separado">Separado(a)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="InputMae">Nome da mãe</label>
+            <input name="nomeMae" type="text" id="InputMae" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" class="form-control"
+                   placeholder="Nome da mãe">
+        </div>
+
+        <div class="form-group">
+            <label for="InputPai">Nome do pai</label>
+            <input name="nomePai" type="text" id="InputPai" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" class="form-control"
+                   placeholder="Nome do pai">
+        </div>
+
+        <div class="form-group">
+            <label for="InputTelefone">Telefone</label>
+            <input name="telefone" type="text" id="InputTelefone" class="form-control" placeholder="Telefone">
+        </div>
+
+        <div class="form-group">
+            <label for="InputEmail">Email</label>
+            <input name="email" type="email" id="InputEmail" class="form-control" placeholder="Email">
+        </div>
+
+        <div class="form-group">
+            <label for="InputCEP">CEP</label>
+            <input name="cep" type="text" id="InputCEP" class="form-control" placeholder="CEP">
+        </div>
+
+        <div class="form-group">
+            <label for="InputNumero">Número</label>
+            <input name="numero" type="number" id="InputNumero" class="form-control" placeholder="Numero">
+        </div>
+
+        <div class="form-group">
+            <label for="InputComplemento">Complemento</label>
+            <input type="text" id="InputComplemento" class="form-control" placeholder="Complemento">
+        </div>
+
+        <div class="form-group">
+            <label for="InputRaca">Raça (autodeclarado)</label>
+            <input name="raca" type="text" id="InputRaca" class="form-control" placeholder="Raça">
+        </div>
+
+        <div class="form-group">
+            <label for="InputNac">Nacionalidade</label>
+            <input name="nacionalidade" type="text" id="InputNac" class="form-control" placeholder="Nacionalidade">
+        </div>
+
+        <div class="form-group">
+            <label for="InputDeficiencia">Deficiências</label>
+            <input name="defeciencia" type="text" id="InputDeficiencia" class="form-control" placeholder="Deficiências (separados por ,)">
+        </div>
+
+        <div class="form-group">
+            <label for="InputTrabalho">Trabalho</label>
+            <input name="trabalho" type="text" id="InputTrabalho" class="form-control" placeholder="Trabalho">
+        </div>
+
+        <div class="form-group ">
+            <label for="InputRenda">Renda familiar</label>
+            <input name="renda" type="text" id="InputRenda" class="form-control" placeholder="Renda familiar (R$)">
+        </div>
+
+        <div class="form-group">
+            <label for="InputDependentes">Número de dependentes</label>
+            <input name="dependentes" type="number" id="InputDependentes" class="form-control" placeholder="Número de dependentes">
+        </div>
+
+        <div class="form-group">
+            <label for="InputRG">RG</label>
+            <input name="rg" type="number" id="InputRG" class="form-control" placeholder="RG">
+        </div>
+
+        <div class="form-group">
+            <label for="InputOrgao">Órgão expedidor da identidade</label>
+            <input name="orgaoExpedidor" type="text" id="InputOrgao" class="form-control" placeholder="Órgão expedidor">
+        </div>
+
+        <div class="form-group">
+            <label for="InputDataExp">Data de expedição da identidade</label>
+            <input name="dataExpedicao" type="date" id="InputDataExp" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="InputPis">Pis/Pasep</label>
+            <input name="pisPasep" type="text" id="InputPis" class="form-control" placeholder="Pis/Pasep">
+        </div>
+
+        <div class="form-group">
+            <label for="InputPlanoSau">Plano de saúde</label>
+            <input name="planoDeSaude" type="text" id="InputPlanoSau" class="form-control" placeholder="Plano de saúde (Unimed, SC Saúde)">
+        </div>
+
+        <div class="form-group">
+            <label for="InputNumeroPlano">Número do cartão do plano</label>
+            <input name="numeroCartaoPlano" type="text" id="InputNumeroPlano" class="form-control" placeholder="Número do cartão do plano">
+        </div>
+
+        <div class="form-group">
+            <label for="InputVencimentoPlano">Vencimento do cartão do plano</label>
+            <input name="vencimentoCartaoPlano" type="date" id="InputVencimentoPlano" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Fuma cigarro?</label>
+            <select name="cigarro" id="InputFumante" class="form-control">
+                <option value="">Selecione</option>
+                <option value="s">Sim</option>
+                <option value="n">Não</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Consome bebidas alcoólicas?</label>
+            <select name="alcool" id="InputBebe" class="form-control">
+                <option value="">Selecione</option>
+                <option value="s">Sim</option>
+                <option value="n">Não</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label name="drogasIlicitas" for="InputZeDroguinha">Usa drogas ilícitas?</label>
+            <input type="text" id="InputZeDroguinha" class="form-control" placeholder="Drogas, separados por ,">
+        </div>
+
+        <div class="form-group">
+            <label for="InputRemedio">Toma algum remédio regularmente?</label>
+            <input name="remedios" type="text" id="InputRemedio" class="form-control" placeholder="Remédios, separados por ,">
+        </div>
+
+        <div class="form-group">
+            <label  for="InputRemedioAlergia">Tem alergia a algum medicamento?</label>
+            <input name="medicamentos" type="text" id="InputRemedioAlergia" class="form-control" placeholder="Medicamentos">
+        </div>
+
+        <div class="form-group">
+            <label for="InputAlimentoAlergia">Tem alergia a algum alimento?</label>
+            <input name="alimentos" type="text" id="InputAlimentoAlergia" class="form-control" placeholder="Alimentos">
+        </div>
+
+        <div class="form-group">
+            <label for="InputEquipamentoAlergia">Tem alergia a algum equipamento médico?</label>
+            <input name="equipamento" type="text" id="InputEquipamentoAlergia" class="form-control"
+                   placeholder="Equipamentos (agulha, por exemplo)">
+        </div>
+
+        <div class="form-group">
+            <label for="SelectTipoSanguineo">Tipo sanguíneo</label>
+            <select name="tipoSanguineo" id="SelectTipoSanguieno" class="form-control">
+                <option value="">Selecione</option>
+                <option value="A-">A-</option>
+                <option value="A+">A+</option>
+                <option value="B-">B-</option>
+                <option value="B+">B+</option>
+                <option value="AB">AB-</option>
+                <option value="AB+">AB+</option>
+                <option value="O-">O-</option>
+                <option value=">O+">O+</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="InputBio">Escreva o que quiser</label>
+            <input name="bio" type="text" id="InputBio" class="form-control" placeholder="Bio">
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-4">Salvar</button>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="./js/libs/jquery.mask.js"></script>
+<script type="text/javascript" src="./js/scripts/geral.js"></script>
+<script src="./main.js"></script>
+
+<!-- Importando o Axios e o arquivo javascript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript" src="./js/services/api.js"></script>
+<script type="text/javascript" src="./js/signup-info.js"></script>
+</body>
 </html>

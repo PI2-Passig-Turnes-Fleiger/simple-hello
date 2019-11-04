@@ -13,6 +13,7 @@
  */
 async function buscaCodigos(){
     const accessToken = localStorage.getItem('accessToken');
+
     const { data } = await api.get('/qrcodes', { headers: { accessToken } });
     const elemento = document.getElementById('codigos');
     
