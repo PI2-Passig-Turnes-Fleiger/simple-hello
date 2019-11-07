@@ -18,7 +18,7 @@ async function buscaCodigos(){
                     <b>Data criação</b>${date.toLocaleDateString()}<br>
                 </div>
                 <div class="col-sm-2 d-flex flex-column justify-content-center">
-                    <button type="button" class="btn" name="botaoDeletar" onclick="deletarQrCode('${qrcode._id}')">
+                    <button type="button" class="btn btn-primary" name="botaoDeletar" onclick="deletarQrCode('${qrcode._id}')">
                         Deletar
                     </button>
                 </div>
@@ -41,4 +41,13 @@ async function deletarQrCode(_id){
     }
 }
 
+async function limparQrCodes(){
+    const accesstoken = localStorage.getItem('accessToken');
+    if(confirm('Você tem certeza que deseja limpar seus qr codes? Não tem volta mesmo!')){
+        const res = await api.delete('/qrcodes', { headers: { accesstoken }});
+        document.location.href = '/criarQRCode.html';
+    }
+}
+
 buscaCodigos();
+document.getElementById('buttonLimpar').addEventListener('click', limparQrCodes);

@@ -32,9 +32,14 @@ module.exports = {
 
     async delete(req, res){
         const { _id } = req.body;
+        const { userId } = req;
 
-        await QRCode.deleteOne({ _id });
-
-        res.json({ deleted: true, _id });
+        if(_id){
+            await QRCode.deleteOne({ _id });
+            res.json({ deleted: true, _id });
+        } else{
+            await QRCode.deleteMany({ _idUser: userId });
+            res.json({ cleared: true });
+        }
     }
 };
