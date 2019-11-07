@@ -28,5 +28,13 @@ module.exports = {
         const { userId } = req;
         const codes = await QRCode.find({ _idUser: userId })
         res.json(codes);
+    },
+
+    async delete(req, res){
+        const { _id } = req.body;
+
+        await QRCode.deleteOne({ _id });
+
+        res.json({ deleted: true, _id });
     }
 };
