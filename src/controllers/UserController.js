@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = mongoose.model('User');
-
+const encryption = require('../encryption');
 
 
 module.exports = {
@@ -13,13 +13,15 @@ module.exports = {
      * @param {*} res - Resposta a ser dada
      */
     async store(req, res){
-        const { nome, sobrenome, email, cpf, senha, confirmar_senha } = req.body;
+        let { nome, sobrenome, email, cpf, senha, confirmar_senha } = req.body;
         if(!nome || !sobrenome || !email || !cpf || !senha || !confirmar_senha)
             return res.status(400).send('Campos incompletos!');
         if(senha != confirmar_senha)
             return res.status(400).send('Senhas não conferem!');
         if(await User.findOne({ email }))
             return res.status(400).send('uje');
+
+        senha = encryption.encrypt(senha)
 
         const user = await User.create({ nome, sobrenome, senha, tipo: 'pf', cpf, email })
 
@@ -37,9 +39,12 @@ module.exports = {
         const { email, senha } = req.body;
 
         const user = await User.findOne({ email });
+
+        const senha2 = encryption.decrypt(user.senha)
+
         if(!user)
             res.status(401).send('une');
-        else if(user.senha !== senha)
+        else if(senha2 !== senha)
             res.status(401).send('eas');
         else{
             const token = jwt.sign({ _id: user._id }, process.env.SECRET);

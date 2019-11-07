@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
     sexo: String,
     raca: String,
     nacionalidade: String,
-    deficiencia: [String],
+    deficiencia: String,
     trabalho: String,
     renda: Number,
     dependentes: Number,
