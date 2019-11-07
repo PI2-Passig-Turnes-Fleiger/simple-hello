@@ -34,6 +34,7 @@ routes.post('/login', UserController.login);
 
 routes.post('/qrcodes', verifyJWT, QRController.store);
 routes.get('/qrcodes', verifyJWT, QRController.index);
+routes.delete('/qrcodes', verifyJWT, QRController.delete);
 
 
 module.exports = routes;

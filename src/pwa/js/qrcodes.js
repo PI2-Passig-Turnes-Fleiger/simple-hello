@@ -1,11 +1,3 @@
-/* <div class="row mt-5">
-    <div class="col-sm-4 qrcode" data-toggle="modal" data-target="#modalQRCode"></div>
-    <div class="col-sm-8 qrcode-details d-flex flex-column justify-content-center ">
-        <b>Data criação</b>22/05/2019<br>
-        <b>Campos</b>nome, sobrenome, idade, cpf...
-    </div>                
-</div> */
-
 /**
  * Responsável por buscar os qr codes de um usuário no servidor e exibir na página. Primeiramente a função busca o token de acesso do usuário,
  * em seguida ela faz um get na rota /qrcodes com este token de acesso. O próprio servidor é responsável por decodificar o token e descobrir quem é
@@ -16,19 +8,24 @@ async function buscaCodigos(){
 
     const { data } = await api.get('/qrcodes', { headers: { accessToken } });
     const elemento = document.getElementById('codigos');
-    
+    elemento.innerHTML = '';
     data.map(qrcode => {
         const date = new Date(qrcode.createdAt);
         elemento.innerHTML += `
-            <div class="row mt-5">
+            <div class="row mt-5" id="${qrcode._id}">
                 <div class="col-sm-4 qrcode" data-toggle="modal" data-target="#modalQRCode"></div>
-                <div class="col-sm-8 qrcode-details d-flex flex-column justify-content-center" id="${qrcode._id}">
+                <div class="col-sm-6 qrcode-details d-flex flex-column justify-content-center">
                     <b>Data criação</b>${date.toLocaleDateString()}<br>
+                </div>
+                <div class="col-sm-2 d-flex flex-column justify-content-center">
+                    <button type="button" class="btn btn-primary" name="botaoDeletar" onclick="deletarQrCode('${qrcode._id}')">
+                        Deletar
+                    </button>
                 </div>
             </div>  
             `;
-        
-        const campos = document.getElementById(qrcode._id);
+
+        const campos = document.getElementById(qrcode._id).getElementsByTagName('div')[1];
         campos.innerHTML += '<b>Campos</b>';
         qrcode.permissoes.map(permissao => campos.innerHTML += `${permissao}, `);
 
@@ -36,4 +33,21 @@ async function buscaCodigos(){
     });
 }
 
+async function deletarQrCode(_id){
+    const accesstoken = localStorage.getItem('accessToken');
+    if(confirm('Você tem certeza que deseja excluir este qr code? Não tem volta!')){
+        const res = await api.delete('/qrcodes', { headers: { accesstoken }, data: { _id } });
+        buscaCodigos();
+    }
+}
+
+async function limparQrCodes(){
+    const accesstoken = localStorage.getItem('accessToken');
+    if(confirm('Você tem certeza que deseja limpar seus qr codes? Não tem volta mesmo!')){
+        const res = await api.delete('/qrcodes', { headers: { accesstoken }});
+        document.location.href = '/criarQRCode.html';
+    }
+}
+
 buscaCodigos();
+document.getElementById('buttonLimpar').addEventListener('click', limparQrCodes);
