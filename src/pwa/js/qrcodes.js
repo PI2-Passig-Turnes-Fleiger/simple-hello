@@ -13,7 +13,7 @@ async function buscaCodigos(){
         const date = new Date(qrcode.createdAt);
         elemento.innerHTML += `
             <div class="row mt-5" id="${qrcode._id}">
-                <div class="col-sm-4 qrcode" data-toggle="modal" data-target="#modalQRCode"></div>
+                <div  class="col-sm-4 qrcode" data-toggle="modal" data-target="#modalQRCode" style="background-image: url('https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${qrcode._id}&choe=UTF-8')"></div>
                 <div class="col-sm-6 qrcode-details d-flex flex-column justify-content-center">
                     <b>Data criação</b>${date.toLocaleDateString()}<br>
                 </div>
