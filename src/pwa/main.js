@@ -7,6 +7,42 @@ const requiresLogin = [
     'outrosQRCodes.html'
 ];
 
+const todos = [
+    'nome',          // 0
+    'sobrenome',     // 1
+    'rg',            // 2
+    'orgaoExpedidor',         // 3
+    'dataExpedicao',       // 4
+    'cpf',           // 5
+    'cnpj',          // 6
+    'nomePai',       // 7
+    'nomeMae',       // 8
+    'dataNascimento',      // 9
+    'localNascimento',     // 10
+    'estadoCivil',     // 11
+    'telefone',      // 12
+    'email',         // 13
+    'Endereco',      // 14
+    'sexo',          // 15
+    'raca',          // 16
+    'nacionalidade', // 17
+    'deficiencia',   // 18
+    'trabalho',      // 19
+    'renda',         // 20
+    'dependentes',   // 21
+    'pisPasep',           // 22
+    'planoDeSaude',         // 23
+    'numeroCartaoPlano',      // 24
+    'vencimentoCartaoPlano',    // 25
+    'cigarro',      // 26
+    'alcool',        // 27
+    'drogasIlicitas',      // 28
+    'remedios',       // 29
+    'Alergias',      // 30
+    'tipoSanguineo', // 31
+    'bio'            // 32
+];
+
 if('serviceWorker' in navigator && page === ""){
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js').then(reg => {

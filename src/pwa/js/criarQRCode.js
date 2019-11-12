@@ -1,39 +1,3 @@
-const ids = [
-    'nome',
-    'sobrenome',
-    'rg',
-    'orgaoExpedidor',
-    'dataExpedicao',
-    'cpf',
-    'cnpj',
-    'nomePai',
-    'nomeMae',
-    'dataNascimento',
-    'localNascimento',
-    'estadoCivil',
-    'telefone',
-    'email',
-    'Endereco',
-    'sexo',
-    'raca',
-    'nacionalidade',
-    'deficiencia',
-    'trabalho',
-    'renda',
-    'dependentes',
-    'pisPasep',
-    'planoDeSaude',
-    'numeroCartaoPlano',
-    'vencimentoCartaoPlano',
-    'cigarro',
-    'alcool',
-    'drogasIlicitas',
-    'remedios',
-    'Alergias',
-    'tipoSanguineo',
-    'bio'
-];
-
 /**
  * Responsável por criar um qr code do usuário, percorre um array de todos os ids de checkboxes e verifica quais estão selecionados. Caso estejam,
  * a é concatenada no array de permissões. No fim da checagem, é feito o post na rota /qrcodes do servidor.
@@ -41,7 +5,7 @@ const ids = [
 async function criaQRCode(){
     const permissoes = [];
     const accesstoken = localStorage.getItem('accessToken');
-    ids.map(id => {
+    todos.map(id => {
         if(document.getElementById(`check${id}`).checked){
             if(id === 'Alergias'){
                 permissoes.push('alergiaMedicamentos');
