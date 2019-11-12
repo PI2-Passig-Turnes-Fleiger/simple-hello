@@ -4,6 +4,7 @@ const routes = express.Router();
 
 const UserController = require('./controllers/UserController');
 const QRController = require('./controllers/QRController');
+const AccessController = require('./controllers/AccessController');
 
 /**
  * Função usada para verificar a autenticação de um usuário. Ela deve ser usada em todas as rotas que precisam de autenticação.
@@ -34,7 +35,11 @@ routes.post('/login', UserController.login);
 
 routes.post('/qrcodes', verifyJWT, QRController.store);
 routes.get('/qrcodes', verifyJWT, QRController.index);
+routes.get('/qrcodes/outros', verifyJWT, AccessController.index);
+routes.get('/qrcodes/info', verifyJWT, AccessController.getInfo);
 routes.delete('/qrcodes', verifyJWT, QRController.delete);
+
+routes.post('/accesscliente', verifyJWT, AccessController.store);
 
 
 module.exports = routes;

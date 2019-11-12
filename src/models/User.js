@@ -37,9 +37,9 @@ const UserSchema = new mongoose.Schema({
     alcool: Boolean,
     drogasIlicitas: String,
     remedios: String,
-    medicamentos: String,
-    alimentos: String,
-    equipamento: String,
+    alergiaMedicamentos: String,
+    alergiaAlimentos: String,
+    alergiaEquipamento: String,
     tipoSanguineo: String,
     bio: String
 });

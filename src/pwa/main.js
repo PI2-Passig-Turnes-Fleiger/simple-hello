@@ -2,7 +2,9 @@ const page = location.href.split("/").slice(-1)[0];
 const requiresLogin = [
     'criarQRCode.html',
     'qrcodes.html',
-    'signup-info.html'
+    'signup-info.html',
+    'qrcode.html',
+    'outrosQRCodes.html'
 ];
 
 if('serviceWorker' in navigator && page === ""){
@@ -40,6 +42,7 @@ function updateNav(accessToken){
                     <a class="nav-item nav-link" href="/criarQRCode.html">CRIAR QR CODE</a>
                     <a class="nav-item nav-link" href="/qrcodes.html">SEUS QR CODES</a>
                     <a class="nav-item nav-link" href="/signup-info.html">VOCÊ</a>
+                    <a class="nav-item nav-link" href="/outrosQRCodes.html">OUTRAS PESSOAS</a>
                     <a class="nav-item nav-link" href="#" id="logout">SAIR</a>
                 </div>
             </div>

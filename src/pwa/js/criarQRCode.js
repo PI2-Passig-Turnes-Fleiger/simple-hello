@@ -1,36 +1,37 @@
 const ids = [
-    'Nome',
-    'Sobrenome',
-    'RG',
-    'Orgao',
-    'DataExp',
-    'CPF',
-    'NomePai',
-    'NomeMae',
-    'DataNasc',
-    'LocalNasc',
-    'EstadoCiv',
-    'Telefone',
-    'Email',
+    'nome',
+    'sobrenome',
+    'rg',
+    'orgaoExpedidor',
+    'dataExpedicao',
+    'cpf',
+    'cnpj',
+    'nomePai',
+    'nomeMae',
+    'dataNascimento',
+    'localNascimento',
+    'estadoCivil',
+    'telefone',
+    'email',
     'Endereco',
-    'Sexo',
-    'Raca',
-    'Nacionalidade',
-    'Deficiencia',
-    'Trabalho',
-    'Renda',
-    'Dependentes',
-    'Pis',
-    'Plano',
-    'NumPlano',
-    'Vencimento',
-    'Nicotina',
-    'Alcool',
-    'Ilicitas',
-    'Remedio',
+    'sexo',
+    'raca',
+    'nacionalidade',
+    'deficiencia',
+    'trabalho',
+    'renda',
+    'dependentes',
+    'pisPasep',
+    'planoDeSaude',
+    'numeroCartaoPlano',
+    'vencimentoCartaoPlano',
+    'cigarro',
+    'alcool',
+    'drogasIlicitas',
+    'remedios',
     'Alergias',
-    'TipoSanguineo',
-    'Bio'
+    'tipoSanguineo',
+    'bio'
 ];
 
 /**
@@ -41,8 +42,18 @@ async function criaQRCode(){
     const permissoes = [];
     const accesstoken = localStorage.getItem('accessToken');
     ids.map(id => {
-        if(document.getElementById(`check${id}`).checked)
-            permissoes.push(id);
+        if(document.getElementById(`check${id}`).checked){
+            if(id === 'Alergias'){
+                permissoes.push('alergiaMedicamentos');
+                permissoes.push('alergiaAlimentos');
+                permissoes.push('alergiaEquipamento');
+            } else if(id === 'Endereco'){
+                permissoes.push('cep');
+                permissoes.push('numero');
+                permissoes.push('complemento');
+            } else
+                permissoes.push(id);
+        }
     });
     
     try{

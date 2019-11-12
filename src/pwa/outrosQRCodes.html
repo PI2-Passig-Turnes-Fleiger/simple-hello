@@ -18,16 +18,11 @@
 
         </nav>
         <div class="container principal mt-5" id="codigos">
-            
-        </div>
-        <div class="mt-5 flex-column justify-content-center text-center">
-            <button class="btn btn-primary" id="buttonLimpar">
-                Limpar seus QR Codes
-            </button>
+
         </div>
 
-        <div class="modal fade" id="modalQRCode" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-             aria-hidden="true" id="modalQRCode">
+        <div class="modal fade" id="modalInfos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -37,9 +32,6 @@
                         </button>
                     </div>
                     <div class="modal-body mx-3 text-center">
-                        <div class="container centrado" id="codigo">
-                            
-                        </div>
                     </div>
                 </div>
             </div>
@@ -54,6 +46,6 @@
         <!-- Importando o Axios e o arquivo javascript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
         <script type="text/javascript" src="./js/services/api.js"></script>
-        <script type="text/javascript" src="./js/qrcodes.js"></script>
+        <script type="text/javascript" src="./js/outrosQRCodes.js"></script>
     </body>
 </html>
