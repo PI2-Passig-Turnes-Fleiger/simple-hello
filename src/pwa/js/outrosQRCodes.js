@@ -35,7 +35,13 @@ async function populaModal(_id){
 
     for(const [key, value] of Object.entries(data)){
         if(key !== '_id' && key !== 'nome' && key !== 'sobrenome'){
-            body.innerHTML += `<h4>${key}: ${key.includes('data')? new Date(value).toLocaleDateString(): value}</h4>`;
+            if(key.includes('data')){
+                const nasc = new Date(value);
+                body.innerHTML += `<h4>${key}: ${nasc.getDay()}/${nasc.getMonth()}/${nasc.getFullYear()}</h4>`;
+            } else{
+                body.innerHTML += `<h4>${key}: ${value}</h4>`;
+            }
+            
         }
     }
 }
