@@ -15,7 +15,7 @@ $( "#signup-info" ).submit(function( e ) {
             array[n['name']] = n['value'];
         }
     });
-
+    console.log(array);
     atualizaUsuario(array);
 })
 
