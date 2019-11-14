@@ -13,7 +13,10 @@ module.exports = {
      * @param {*} res - Resposta a ser dada
      */
     async store(req, res){
-        let { nome, sobrenome, email, cpf, senha, confirmar_senha } = req.body;
+        let { data } = req.body;
+        data = JSON.parse(encryption.decrypt(data));
+
+        let { nome, sobrenome, email, cpf, senha, confirmar_senha } = data;
         if(!nome || !sobrenome || !email || !cpf || !senha || !confirmar_senha)
             return res.status(400).send('Campos incompletos!');
         if(senha != confirmar_senha)
@@ -36,7 +39,9 @@ module.exports = {
      * @param {*} res - Resposta a ser dada
      */
     async login(req, res){
-        const { email, senha } = req.body;
+        const { data } = req.body;
+        const decryptedData = JSON.parse(encryption.decrypt(data));
+        const { email, senha } = decryptedData;
 
         const user = await User.findOne({ email });
 
@@ -44,10 +49,8 @@ module.exports = {
 
         if(!user)
             res.status(401).send('une');
-        else if(senha2 !== senha){
-            console.log(senha, senha2);
+        else if(senha2 !== senha)
             res.status(401).send('eas');
-        }
         else{
             const token = jwt.sign({ _id: user._id }, process.env.SECRET);
             res.json({ auth: true, token });
@@ -63,7 +66,11 @@ module.exports = {
      */
     async info(req, res){
         const { userId } = req;
-        await User.updateOne({ "_id": userId}, req.body);
+
+        let { data } = req.body;
+        data = JSON.parse(encryption.decrypt(data));
+
+        await User.updateOne({ "_id": userId}, data);
         return res.json(true);
     },
 
@@ -76,7 +83,9 @@ module.exports = {
     async index(req, res){
         const { userId } = req;
         const user = await User.find({ _id: userId })
-        res.json(user);
+
+        const encryptedUser = encryption.encrypt(JSON.stringify(user));
+        res.json({ data: encryptedUser });
     }
 
 

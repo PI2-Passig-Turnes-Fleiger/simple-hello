@@ -1,5 +1,6 @@
 async function buscaOutrosCodigos(){
-    const { data } = await api.get('/qrcodes/outros', { headers: { accessToken } });
+    let { data } = await api.get('/qrcodes/outros', { headers: { accessToken } });
+    data = JSON.parse(decrypt(data.data));
     
     const elemento = document.getElementById('codigos');
     elemento.innerHTML = '<h1 class="text-center">QRCodes que você leu!</h1>';
@@ -25,7 +26,9 @@ async function buscaOutrosCodigos(){
 }
 
 async function populaModal(_id){
-    const { data } = await api.get('/qrcodes/info', { headers: { accessToken }, params: { _id } });
+    let { data } = await api.get('/qrcodes/info', { headers: { accessToken }, params: { _id } });
+
+    data = JSON.parse(decrypt(data.data));
 
     const modal = document.getElementById('modalInfos');
     modal.getElementsByTagName('h4')[0].innerHTML = `${data.nome} ${data.sobrenome}`;

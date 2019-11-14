@@ -22,9 +22,8 @@ async function criaQRCode(){
     
     try{
         const encryptedPermissoes = encrypt(JSON.stringify(permissoes));
-        console.log(encryptedPermissoes);
 
-        const response = await api.post('/qrcodes', { permissoes }, { headers: { accesstoken }});
+        const response = await api.post('/qrcodes', { data: encryptedPermissoes }, { headers: { accesstoken }});
     } catch(err){
         console.log(err);
         alert('Criação de QR Code falhou');

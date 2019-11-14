@@ -12,7 +12,8 @@ async function logar(){
     const senha = document.getElementById('loginSenha').value;
 
     try{
-        const response = await api.post('/login', { email, senha });
+        const encryptedData = encrypt(JSON.stringify({ email, senha }))
+        const response = await api.post('/login', { data: encryptedData });
         localStorage.setItem('accessToken', response.data.token);
         document.location.href = '/'
     } catch(err){

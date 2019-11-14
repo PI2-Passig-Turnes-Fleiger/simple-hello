@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const encryption = require('../encryption');
 const jwt = require('jsonwebtoken');
 
 const QRCode = mongoose.model('QRCode');
@@ -11,11 +12,14 @@ module.exports = {
      * @param {*} res - Resposta a ser dada pelo servidor
      */
     async store(req, res){
-        const { permissoes } = req.body;
+        const { data } = req.body;
+        const permissoes = JSON.parse(encryption.decrypt(data));
+
         const { userId } = req;
         const qrcode = await QRCode.create({ permissoes, _idUser: userId });
 
-        res.status(201).json(qrcode);
+        const encryptedqrcode = encryption.encrypt(JSON.stringify(qrcode));
+        res.status(201).json({ data: encryptedqrcode });
     },
 
     /**
@@ -27,7 +31,8 @@ module.exports = {
     async index(req, res){
         const { userId } = req;
         const codes = await QRCode.find({ _idUser: userId })
-        res.json(codes);
+        const encryptedCodes = encryption.encrypt(JSON.stringify(codes));
+        res.json({ data: encryptedCodes });
     },
 
     async delete(req, res){

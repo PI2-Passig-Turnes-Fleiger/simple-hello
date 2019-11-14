@@ -23,7 +23,8 @@ $( "#signup-info" ).submit(function( e ) {
 async function atualizaUsuario(x) {
     let res;
     try {
-        res = await api.post('/usersInfo', x, { headers: { accessToken } } );
+        const data = encrypt(JSON.stringify(x));
+        res = await api.post('/usersInfo', { data }, { headers: { accessToken } } );
     } catch (err) {
         alert('Erro!' + err );
         return;
@@ -34,7 +35,10 @@ async function atualizaUsuario(x) {
 
 async function buscaInfos() {
     const accessToken = localStorage.getItem('accessToken');
-    const { data } = await api.get('/usersInfo', { headers: { accessToken } });
+
+    let { data } = await api.get('/usersInfo', { headers: { accessToken } });
+    data = JSON.parse(decrypt(data.data));
+
     const dados = data[0];
     document.getElementById("nome_pessoa").innerHTML = data[0].nome + " " +
         data[0].sobrenome;

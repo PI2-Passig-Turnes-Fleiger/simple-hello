@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const AccessCliente = mongoose.model('AccessCliente');
 const User = mongoose.model('User');
+const encryption = require('../encryption');
 
 module.exports = {
     async store(req, res){
@@ -21,7 +22,9 @@ module.exports = {
                 path: '_idQRCode',
                 populate: { path: '_idUser', select: 'nome sobrenome -_id' }
             });
-        res.json(accesses);
+        
+        const encryptedAccesses = encryption.encrypt(JSON.stringify(accesses));
+        res.json({ data: encryptedAccesses });
     },
 
     async getInfo(req, res){
@@ -30,8 +33,9 @@ module.exports = {
         const access = await AccessCliente.findById(_id).populate('_idQRCode');
         await AccessCliente.updateOne({ _id }, { lastAccess: Date.now() });
         const permissoes = access._idQRCode.permissoes;
-        const user = await User.findById(access._idQRCode._idUser, permissoes.join(' '))
+        const user = await User.findById(access._idQRCode._idUser, permissoes.join(' '));
 
-        res.json(user);
+        const encryptedUser = encryption.encrypt(JSON.stringify(user));
+        res.json({ data: encryptedUser });
     }
 }
