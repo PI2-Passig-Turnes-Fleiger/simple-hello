@@ -13,6 +13,11 @@ $(document).ready(function () {
     $('#InputRenda').mask('000.000.000.000.000,00', {reverse: true});
 });
 
+/**
+ * Função usada para converter uma string monetária em um valor float
+ * 
+ * @param {string} valor - valor a ser convertido
+ */
 function converteMoedaFloat(valor) {
 
     if (valor === "") {
@@ -25,10 +30,11 @@ function converteMoedaFloat(valor) {
     return valor;
 }
 
-/*   @brief Converte um valor em formato float para uma string em formato moeda
-      @param valor(float) - o valor float
-      @return valor(string) - o valor em moeda
-   */
+/**
+* Converte um valor em formato float para uma string em formato moeda
+* @param valor(float) - o valor float
+* @return valor(string) - o valor em moeda
+*/
 function converteFloatMoeda(valor) {
     var inteiro = null, decimal = null, c = null, j = null;
     var aux = new Array();
@@ -75,6 +81,11 @@ function converteFloatMoeda(valor) {
 
 }
 
+/**
+ * Usada para formatar uma data.
+ * 
+ * @param {string} data - string da data a ser convertida
+ */
 function formataData(data){
     let novaData;
 
@@ -82,6 +93,12 @@ function formataData(data){
 
 }
 
+
+/**
+ * Função usada para validar um CPF
+ * 
+ * @param {string} strCPF - string do CPF
+ */
 function validaCPF(strCPF) {
     var RegExp = /^[\.-]/;
     strCPF = strCPF.replace(/[^\d]+/g, '');

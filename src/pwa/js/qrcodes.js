@@ -35,6 +35,11 @@ async function buscaCodigos(){
     });
 }
 
+/**
+ * Função usada para deletar um qr code, a partir do seu id. Para isso, faz-se um DELETE na rota /qrcodes
+ * 
+ * @param {string} _id - id do qrcode a ser deletado
+ */
 async function deletarQrCode(_id){
     const accesstoken = localStorage.getItem('accessToken');
     if(confirm('Você tem certeza que deseja excluir este qr code? Não tem volta!')){
@@ -43,6 +48,9 @@ async function deletarQrCode(_id){
     }
 }
 
+/**
+ * Função usada para limpar todos os qr codes de um usuário.
+ */
 async function limparQrCodes(){
     const accesstoken = localStorage.getItem('accessToken');
     if(confirm('Você tem certeza que deseja limpar seus qr codes? Não tem volta mesmo!')){
@@ -51,6 +59,11 @@ async function limparQrCodes(){
     }
 }
 
+/**
+ * Função usada para colocar o QR Code grande no modal
+ * 
+ * @param {string} _id - id do qr code
+ */
 function updateModal(_id){
     document.getElementById('codigo').innerHTML = `<img src="https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=${_id}&choe=UTF-8"/>`
 }

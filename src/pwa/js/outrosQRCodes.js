@@ -1,3 +1,6 @@
+/**
+ * Função usada para buscar os QR Codes que um usuário leu e atualizar a interface na tela.
+ */
 async function buscaOutrosCodigos(){
     let { data } = await api.get('/qrcodes/outros', { headers: { accessToken } });
     data = JSON.parse(decrypt(data.data));
@@ -25,6 +28,11 @@ async function buscaOutrosCodigos(){
     });
 }
 
+/**
+ * Função usada para popular o modal na tela com as informações de outra pessoa.
+ * 
+ * @param {string} _id - id de um AccessCliente do banco de dados.
+ */
 async function populaModal(_id){
     let { data } = await api.get('/qrcodes/info', { headers: { accessToken }, params: { _id } });
 

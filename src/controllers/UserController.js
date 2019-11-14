@@ -6,7 +6,7 @@ const encryption = require('../encryption');
 
 module.exports = {
 
-/**
+    /**
      * Responsável por criar um usuário. Lê da requisição o nome, sobrenome, email, cpf, senha e confirmação de senha e cria um novo usuário no banco de dados.
      *
      * @param {*} req - Requisição recebida pelo servidor

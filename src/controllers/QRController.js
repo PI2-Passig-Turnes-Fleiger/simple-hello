@@ -35,6 +35,12 @@ module.exports = {
         res.json({ data: encryptedCodes });
     },
 
+    /**
+     * Função usada para remover um QR Code, a partir do ID recebido em req.body
+     * 
+     * @param {*} req - Requisição recebida pelo servidor
+     * @param {*} res - Resposta a ser enviada pelo servidor
+     */
     async delete(req, res){
         const { _id } = req.body;
         const { userId } = req;

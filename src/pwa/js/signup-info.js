@@ -1,7 +1,3 @@
-/**
- * Responsável por atualizar os dados de um usuário. A função busca todos os dados do formulário na página e os envia para o servidor, com um post na rota /userInfo
- */
-
 $( "#signup-info" ).submit(function( e ) {
 
     let x = $( this ).serializeArray();
@@ -15,15 +11,18 @@ $( "#signup-info" ).submit(function( e ) {
             array[n['name']] = n['value'];
         }
     });
-    console.log(array);
     atualizaUsuario(array);
 })
 
-
+/**
+ * Responsável por atualizar os dados de um usuário. A função busca todos os dados do formulário na página e os envia para o servidor, com um post na rota /userInfo
+ */
 async function atualizaUsuario(x) {
     let res;
     try {
         const data = encrypt(JSON.stringify(x));
+        console.log(x);
+        console.log(data);
         res = await api.post('/usersInfo', { data }, { headers: { accessToken } } );
     } catch (err) {
         alert('Erro!' + err );
@@ -33,6 +32,9 @@ async function atualizaUsuario(x) {
 
 }
 
+/**
+ * Função responsável por buscar as informações do usuário no banco, para popular o formulário.
+ */
 async function buscaInfos() {
     const accessToken = localStorage.getItem('accessToken');
 

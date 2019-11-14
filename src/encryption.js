@@ -8,6 +8,11 @@ var iterations = 100;
 var pass = "DUSENFUAPGMGRICOGKPEKWMVOGOAMBPW";
 
 
+/**
+ * Função usada para criptografar uma mensagem qualquer.
+ * 
+ * @param {string} msg - mensagem a ser criptografada
+ */
 function encrypt (msg) {
   var salt = CryptoJS.lib.WordArray.random(128/8);
   
@@ -31,10 +36,15 @@ function encrypt (msg) {
   return transitmessage;
 }
 
-function decrypt (transitmessage) {
-  var salt = CryptoJS.enc.Hex.parse(transitmessage.substr(0, 32));
-  var iv = CryptoJS.enc.Hex.parse(transitmessage.substr(32, 32))
-  var encrypted = transitmessage.substring(64);
+/**
+ * Função usada para descriptografar uma mensagem
+ * 
+ * @param {string} msg - mensagem a ser descriptografada
+ */
+function decrypt (msg) {
+  var salt = CryptoJS.enc.Hex.parse(msg.substr(0, 32));
+  var iv = CryptoJS.enc.Hex.parse(msg.substr(32, 32))
+  var encrypted = msg.substring(64);
   
   var key = CryptoJS.PBKDF2(pass, salt, {
       keySize: keySize/32,
