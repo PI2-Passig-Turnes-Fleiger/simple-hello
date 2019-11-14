@@ -44,8 +44,10 @@ module.exports = {
 
         if(!user)
             res.status(401).send('une');
-        else if(senha2 !== senha)
+        else if(senha2 !== senha){
+            console.log(senha, senha2);
             res.status(401).send('eas');
+        }
         else{
             const token = jwt.sign({ _id: user._id }, process.env.SECRET);
             res.json({ auth: true, token });
