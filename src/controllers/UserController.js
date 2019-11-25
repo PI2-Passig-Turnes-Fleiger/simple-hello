@@ -45,13 +45,15 @@ module.exports = {
 
         const user = await User.findOne({ email });
 
-        const senha2 = encryption.decrypt(user.senha)
-
         if(!user)
-            res.status(401).send('une');
-        else if(senha2 !== senha)
+            return res.status(401).send('une');
+
+        const senha2 = encryption.decrypt(user.senha)
+        
+            if(senha2 !== senha)
             res.status(401).send('eas');
         else{
+            
             const token = jwt.sign({ _id: user._id }, process.env.SECRET);
             res.json({ auth: true, token });
         }

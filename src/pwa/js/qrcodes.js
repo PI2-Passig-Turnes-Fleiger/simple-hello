@@ -65,7 +65,7 @@ async function limparQrCodes(){
  * @param {string} _id - id do qr code
  */
 function updateModal(_id){
-    document.getElementById('codigo').innerHTML = `<img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://simple-hello.ifsc.casa/QRCode.html?_id=${qrcode._id}&choe=UTF-8"/>`
+    document.getElementById('codigo').innerHTML = `<img src="https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=https://simple-hello.ifsc.casa/QRCode.html?_id=${_id}&choe=UTF-8"/>`
 }
 
 buscaCodigos();

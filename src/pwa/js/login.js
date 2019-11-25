@@ -1,4 +1,4 @@
-
+const { _id } = getUrlVars();
 
 $( "#login" ).submit(function( event ) {
     logar();
@@ -16,7 +16,11 @@ async function logar(){
         const encryptedData = encrypt(JSON.stringify({ email, senha }))
         const response = await api.post('/login', { data: encryptedData });
         localStorage.setItem('accessToken', response.data.token);
-        document.location.href = '/'
+        if(_id){
+            document.location.href = `/QRCode.html?_id=${_id}`
+        } else{
+            document.location.href = '/'
+        }
     } catch(err){
         const { data } = err.response
         console.log('erro:', data);

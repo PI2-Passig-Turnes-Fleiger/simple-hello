@@ -1,21 +1,16 @@
-/**
- * Função usada para recuperar os parâmetros de URL.
- */
-function getUrlVars() {
-    const vars = {};
-    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}
-
 const { _id } = getUrlVars();
 
 /**
  * Função usada para fazer um post na rota /accesscliente com o _id passado pelo parâmetro da url
  */
 async function acessaQRCode(){
-    const ac = await api.post('/accesscliente', { _id }, { headers: { accessToken } });
+    if(accessToken){
+        await api.post('/accesscliente', { _id }, { headers: { accessToken } });
+    } else{
+        alert('Faça login primeiro!');
+        document.location.href=`/index.html?_id=${_id}`
+        return
+    }
     
     document.location.href='/outrosQRCodes.html'
 }
