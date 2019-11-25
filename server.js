@@ -23,4 +23,4 @@ app.use(express.urlencoded({ extended: false }));
 // Rotas recebidas do arquivo routes.js
 app.use('/', require('./src/routes'));
 
-app.listen(1234);
+app.listen(3000);

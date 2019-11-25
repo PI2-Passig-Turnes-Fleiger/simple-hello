@@ -1,3 +1,3 @@
 const api = axios.create({
-    baseURL: 'http://localhost:1234'
+    baseURL: 'http://localhost:3000'
 });

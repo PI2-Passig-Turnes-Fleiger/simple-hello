@@ -16,6 +16,11 @@ async function buscaOutrosCodigos(){
                     <b>Data criação</b>${date.toLocaleDateString()}<br>
                     <b>Lido de</b>${access._idQRCode._idUser.nome} ${access._idQRCode._idUser.sobrenome}<br>
                 </div>
+                <div class="col-sm-2 d-flex flex-column justify-content-center">
+                    <button type="button" class="btn btn-primary" name="botaoDeletar" onclick="deletarQrCode('${access._id}')">
+                        Deletar
+                    </button>
+                </div>
             </div>  
             `;
 
@@ -26,6 +31,19 @@ async function buscaOutrosCodigos(){
 
         campos.innerHTML = campos.innerHTML.substr(0, campos.innerHTML.length-2);
     });
+}
+
+/**
+ * Função usada para deletar um qr code lido, a partir do id do AccessCliente. Para isso, faz-se um DELETE na rota /qrcodes
+ * 
+ * @param {string} _id - id do qrcode a ser deletado
+ */
+async function deletarQrCode(_id){
+    const accesstoken = localStorage.getItem('accessToken');
+    if(confirm('Você tem certeza que deseja excluir este qr code? Não tem volta!')){
+        const res = await api.delete('/accesscliente', { headers: { accesstoken }, data: { _id } });
+        buscaOutrosCodigos();
+    }
 }
 
 /**

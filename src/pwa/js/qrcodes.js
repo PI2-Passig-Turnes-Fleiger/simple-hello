@@ -15,7 +15,7 @@ async function buscaCodigos(){
         const date = new Date(qrcode.createdAt);
         elemento.innerHTML += `
             <div class="row mt-5" id="${qrcode._id}">
-                <div  class="col-sm-4 qrcode" onClick="updateModal('${qrcode._id}')" data-toggle="modal" data-target="#modalQRCode" style="background-image: url('https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${qrcode._id}&choe=UTF-8')"></div>
+                <div  class="col-sm-4 qrcode" onClick="updateModal('${qrcode._id}')" data-toggle="modal" data-target="#modalQRCode" style="background-image: url('https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://simple-hello.ifsc.casa/QRCode.html?_id=${qrcode._id}&choe=UTF-8')"></div>
                 <div class="col-sm-6 qrcode-details d-flex flex-column justify-content-center">
                     <b>Data criação</b>${date.toLocaleDateString()}<br>
                 </div>
@@ -65,7 +65,7 @@ async function limparQrCodes(){
  * @param {string} _id - id do qr code
  */
 function updateModal(_id){
-    document.getElementById('codigo').innerHTML = `<img src="https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=${_id}&choe=UTF-8"/>`
+    document.getElementById('codigo').innerHTML = `<img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://simple-hello.ifsc.casa/QRCode.html?_id=${qrcode._id}&choe=UTF-8"/>`
 }
 
 buscaCodigos();

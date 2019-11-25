@@ -55,5 +55,13 @@ module.exports = {
 
         const encryptedUser = encryption.encrypt(JSON.stringify(user));
         res.json({ data: encryptedUser });
+    },
+
+    async delete(req, res){
+        const { _id } = req.body;
+        const { userId } = req;
+
+        await AccessCliente.deleteOne({ _id });
+        res.json({ deleted: true, _id });
     }
 }

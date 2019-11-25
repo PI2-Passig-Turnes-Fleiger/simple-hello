@@ -40,6 +40,7 @@ routes.get('/qrcodes/info', verifyJWT, AccessController.getInfo);
 routes.delete('/qrcodes', verifyJWT, QRController.delete);
 
 routes.post('/accesscliente', verifyJWT, AccessController.store);
+routes.delete('/accesscliente', verifyJWT, AccessController.delete);
 
 
 module.exports = routes;
