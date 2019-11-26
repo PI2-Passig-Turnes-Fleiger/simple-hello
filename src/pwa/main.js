@@ -80,9 +80,6 @@ updateNav(accessToken);
 function updateNav(accessToken){
     if(accessToken){
         navbar.innerHTML = `
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="/">HOME <span class="sr-only">(current)</span></a>
@@ -93,14 +90,13 @@ function updateNav(accessToken){
                     <a class="nav-item nav-link" href="#" id="logout">SAIR</a>
                 </div>
             </div>
-
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <a class="navbar-brand" href="#">SIMPLE HELLO</a>
         `
     } else{
         navbar.innerHTML = `
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="/">HOME <span class="sr-only">(current)</span></a>
@@ -108,7 +104,9 @@ function updateNav(accessToken){
                     <a class="nav-item nav-link" href="signup.html">CADASTRE-SE</a>
                 </div>
             </div>
-
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <a class="navbar-brand" href="#">SIMPLE HELLO</a>
         `
     }

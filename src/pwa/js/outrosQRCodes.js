@@ -77,7 +77,6 @@ async function populaModal(_id){
                                         <input style="${lastEdited.includes(key)? 'color: red;': ''}" value="${value}" id="${key}" disabled="true" class="form-control"/>
                                     </div>`;
             }
-            
         }
     }
 }
