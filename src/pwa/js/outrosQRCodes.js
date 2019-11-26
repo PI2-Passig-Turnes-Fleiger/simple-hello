@@ -54,21 +54,21 @@ async function deletarQrCode(_id){
 async function populaModal(_id){
     let { data } = await api.get('/qrcodes/info', { headers: { accessToken }, params: { _id } });
 
-    data = JSON.parse(decrypt(data.data));
+    const { user, lastEdited } = JSON.parse(decrypt(data.data));
 
     const modal = document.getElementById('modalInfos');
-    modal.getElementsByTagName('h4')[0].innerHTML = `${data.nome} ${data.sobrenome}`;
+    modal.getElementsByTagName('h4')[0].innerHTML = `${user.nome} ${user.sobrenome}`;
 
     const body = modal.getElementsByClassName('modal-body')[0];
     body.innerHTML = '';
 
-    for(const [key, value] of Object.entries(data)){
+    for(const [key, value] of Object.entries(user)){
         if(key !== '_id' && key !== 'nome' && key !== 'sobrenome'){
             if(key.includes('data')){
                 const nasc = new Date(value);
-                body.innerHTML += `<h4>${key}: ${nasc.getDay()}/${nasc.getMonth()}/${nasc.getFullYear()}</h4>`;
+                body.innerHTML += `<h4${lastEdited.includes(key)? ' style="color: red;"': ''}>${key}: ${nasc.getDay()}/${nasc.getMonth()}/${nasc.getFullYear()}</h4>`;
             } else{
-                body.innerHTML += `<h4>${key}: ${value}</h4>`;
+                body.innerHTML += `<h4${lastEdited.includes(key)? ' style="color: red;"': ''}>${key}: ${value}</h4>`;
             }
             
         }

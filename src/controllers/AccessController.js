@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const AccessCliente = mongoose.model('AccessCliente');
 const User = mongoose.model('User');
+const LogEdit = mongoose.model('LogEdit');
 const encryption = require('../encryption');
 
 module.exports = {
@@ -49,17 +50,28 @@ module.exports = {
         const { _id } = req.query;
 
         const access = await AccessCliente.findById(_id).populate('_idQRCode');
-        await AccessCliente.updateOne({ _id }, { lastAccess: Date.now() });
+        
         const permissoes = access._idQRCode.permissoes;
         const user = await User.findById(access._idQRCode._idUser, permissoes.join(' '));
+        
+        lastEdited = []
 
-        const encryptedUser = encryption.encrypt(JSON.stringify(user));
+        const logEdit = await LogEdit.find({ _idUser: user._id });
+        logEdit.forEach(log => {
+            if(log.date > access.lastAccess){
+                log.campos.forEach(campo => {
+                    if(!lastEdited.includes(campo))
+                        lastEdited.push(campo);
+                });
+            }
+        });
+        await AccessCliente.updateOne({ _id }, { lastAccess: Date.now() });
+        const encryptedUser = encryption.encrypt(JSON.stringify({ user, lastEdited }));
         res.json({ data: encryptedUser });
     },
 
     async delete(req, res){
         const { _id } = req.body;
-        const { userId } = req;
 
         await AccessCliente.deleteOne({ _id });
         res.json({ deleted: true, _id });

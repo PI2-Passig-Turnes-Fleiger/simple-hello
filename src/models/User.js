@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const LogEdit = mongoose.model('LogEdit');
 
 const UserSchema = new mongoose.Schema({
     // _id não é necessário, o próprio banco de dados o cria.
@@ -43,5 +44,16 @@ const UserSchema = new mongoose.Schema({
     tipoSanguineo: String,
     bio: String
 });
+
+UserSchema.pre('updateOne', async function(){
+    const campos = Object.keys(this.getUpdate());
+    const { _id } = this.getQuery();
+    if(campos.length !== 0){
+        await LogEdit.create({
+            _idUser: _id,
+            campos
+        });
+    }
+})
 
 mongoose.model('User', UserSchema);

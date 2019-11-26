@@ -72,7 +72,28 @@ module.exports = {
         let { data } = req.body;
         data = JSON.parse(encryption.decrypt(data));
 
-        await User.updateOne({ "_id": userId}, data);
+        const user = await User.findById(userId);
+
+        const changes = {}
+
+        Object.entries(data).forEach(([key, value]) => {
+            if(typeof user[key] === 'boolean'){
+                value = value ==='true';
+            } else if(typeof user[key] === 'object'){
+                value = new Date(value);
+                user[key] = new Date(user[key]);
+                if(user[key].getTime() !== value.getTime()){
+                    changes[key] = value;
+                    keys.push(key);
+                }
+                return;
+            }
+
+            if(user[key] != value)
+                changes[key] = value;
+        });
+
+        await User.updateOne({ '_id': userId}, changes);
         return res.json(true);
     },
 
