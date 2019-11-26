@@ -66,8 +66,10 @@ async function populaModal(_id){
         if(key !== '_id' && key !== 'nome' && key !== 'sobrenome'){
             if(key.includes('data')){
                 const nasc = new Date(value);
-                body.innerHTML += `<label for="${key}">${key}</label>
-                                   <input value="${nasc.getDay()}/${nasc.getMonth()}/${nasc.getFullYear()}" id="${key}" disabled="true" class="form-control"/>`
+                body.innerHTML += ` <div class="form-group">
+                                        <label for="${key}">${key}</label>
+                                        <input style="${lastEdited.includes(key)? 'color: red;': ''}" value="${nasc.getDay()}/${nasc.getMonth()}/${nasc.getFullYear()}" id="${key}" disabled="true" class="form-control"/>
+                                    </div>`
                 // body.innerHTML += `<h4${lastEdited.includes(key)? ' style="color: red;"': ''}>${key}: ${nasc.getDay()}/${nasc.getMonth()}/${nasc.getFullYear()}</h4>`;
             } else{
                 body.innerHTML += ` <div class="form-group">
