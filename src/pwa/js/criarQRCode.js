@@ -6,7 +6,7 @@ async function criaQRCode(){
     const permissoes = [];
     const accesstoken = localStorage.getItem('accessToken');
     todos.map(id => {
-        if(document.getElementById(`check${id}`).checked){
+        if(document.getElementById(`check${id}`) && document.getElementById(`check${id}`).checked){
             if(id === 'Alergias'){
                 permissoes.push('alergiaMedicamentos');
                 permissoes.push('alergiaAlimentos');
@@ -19,6 +19,8 @@ async function criaQRCode(){
                 permissoes.push(id);
         }
     });
+    permissoes.push('nome');
+    permissoes.push('sobrenome');
     
     try{
         const encryptedPermissoes = encrypt(JSON.stringify(permissoes));
