@@ -21,8 +21,6 @@ async function atualizaUsuario(x) {
     let res;
     try {
         const data = encrypt(JSON.stringify(x));
-        console.log(x);
-        console.log(data);
         res = await api.post('/usersInfo', { data }, { headers: { accessToken } } );
     } catch (err) {
         alert('Erro!' + err );
@@ -37,24 +35,23 @@ async function atualizaUsuario(x) {
  */
 async function buscaInfos() {
     const accessToken = localStorage.getItem('accessToken');
+    const id = localStorage.getItem('encryption_key').split(';')[0];
 
-    let { data } = await api.get('/usersInfo', { headers: { accessToken } });
+    let { data } = await api.get('/usersInfo', { headers: { accessToken, id } });
     data = JSON.parse(decrypt(data.data));
-
-    const dados = data[0];
-    document.getElementById("nome_pessoa").innerHTML = data[0].nome + " " +
-        data[0].sobrenome;
-    Object.keys(dados).forEach(function(item){
-        let elemento = document.getElementsByName(item)[0];
+    
+    document.getElementById("nome_pessoa").innerHTML = data.nome + " " + data.sobrenome;
+    Object.keys(data).forEach(key => {
+        let elemento = document.getElementsByName(key)[0];
         if(elemento) {
-            if(item == "renda"){
-                dados[item] = converteFloatMoeda(dados[item])
+            if(key == "renda")
+                data[key] = converteFloatMoeda(data[key])
+            
+            if(key == "dataNascimento" || key == "dataExpedicao" || key == "vencimentoCartaoPlano"){
+                let date = formataData(data[key]);
+                data[key] = date;
             }
-            if(item == "dataNascimento" || item == "dataExpedicao" || item == "vencimentoCartaoPlano"){
-                let data = formataData(dados[item])
-                dados[item] = data;
-            }
-            elemento.value = dados[item];
+            elemento.value = data[key];
         }
     });
 }

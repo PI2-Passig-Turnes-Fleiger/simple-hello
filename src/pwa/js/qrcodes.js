@@ -5,8 +5,9 @@
  */
 async function buscaCodigos(){
     const accessToken = localStorage.getItem('accessToken');
+    const id = localStorage.getItem('encryption_key').split(';')[0]
 
-    let { data } = await api.get('/qrcodes', { headers: { accessToken } });
+    let { data } = await api.get('/qrcodes', { headers: { accessToken, id } });
     data = JSON.parse(decrypt(data.data))
 
     const elemento = document.getElementById('codigos');

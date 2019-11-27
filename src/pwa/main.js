@@ -57,6 +57,13 @@ const accessToken = localStorage.getItem('accessToken');
 if(!accessToken && requiresLogin.includes(page))
     document.location.href = '/';
 
+const key = localStorage.getItem('encryption_key');
+if (!key){
+    api.post('/keys').then(({ data }) => {
+        const { _id, key } = data;
+        localStorage.setItem('encryption_key', _id + ';' + key);
+    });
+}
 const navbar = document.getElementById('navbar');
 
 /**

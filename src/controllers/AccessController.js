@@ -30,13 +30,14 @@ module.exports = {
      */
     async index(req, res){
         const { userId } = req;
+        const { id } = req.headers;
         const accesses = await AccessCliente.find({ _idCliente: userId })
             .populate({
                 path: '_idQRCode',
                 populate: { path: '_idUser', select: 'nome sobrenome -_id' }
             });
         
-        const encryptedAccesses = encryption.encrypt(JSON.stringify(accesses));
+        const encryptedAccesses = await encryption.encrypt(id + ';' + JSON.stringify(accesses));
         res.json({ data: encryptedAccesses });
     },
 
@@ -48,6 +49,7 @@ module.exports = {
      */
     async getInfo(req, res){
         const { _id } = req.query;
+        const { id } = req.headers;
 
         const access = await AccessCliente.findById(_id).populate('_idQRCode');
         
@@ -66,7 +68,7 @@ module.exports = {
             }
         });
         await AccessCliente.updateOne({ _id }, { lastAccess: Date.now() });
-        const encryptedUser = encryption.encrypt(JSON.stringify({ user, lastEdited }));
+        const encryptedUser = await encryption.encrypt(id + ';' + JSON.stringify({ user, lastEdited }));
         res.json({ data: encryptedUser });
     },
 

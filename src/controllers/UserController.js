@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = mongoose.model('User');
 const encryption = require('../encryption');
+const Key = mongoose.model('Key');
 
 
 module.exports = {
@@ -14,7 +15,8 @@ module.exports = {
      */
     async store(req, res){
         let { data } = req.body;
-        data = JSON.parse(encryption.decrypt(data));
+        let { id } = req.headers;
+        data = JSON.parse(await encryption.decrypt(data));
 
         let { nome, sobrenome, email, cpf, senha, confirmar_senha } = data;
         if(!nome || !sobrenome || !email || !cpf || !senha || !confirmar_senha)
@@ -24,7 +26,7 @@ module.exports = {
         if(await User.findOne({ email }))
             return res.status(400).send('uje');
 
-        senha = encryption.encrypt(senha)
+        senha = await encryption.encrypt(id + ';' + senha)
 
         const user = await User.create({ nome, sobrenome, senha, tipo: 'pf', cpf, email })
 
@@ -40,7 +42,7 @@ module.exports = {
      */
     async login(req, res){
         const { data } = req.body;
-        const decryptedData = JSON.parse(encryption.decrypt(data));
+        const decryptedData = JSON.parse(await encryption.decrypt(data));
         const { email, senha } = decryptedData;
 
         const user = await User.findOne({ email });
@@ -48,7 +50,7 @@ module.exports = {
         if(!user)
             return res.status(401).send('une');
 
-        const senha2 = encryption.decrypt(user.senha)
+        const senha2 = await encryption.decrypt(user.senha)
         
             if(senha2 !== senha)
             res.status(401).send('eas');
@@ -70,7 +72,7 @@ module.exports = {
         const { userId } = req;
 
         let { data } = req.body;
-        data = JSON.parse(encryption.decrypt(data));
+        data = JSON.parse(await encryption.decrypt(data));
 
         const user = await User.findById(userId);
 
@@ -105,11 +107,10 @@ module.exports = {
      */
     async index(req, res){
         const { userId } = req;
-        const user = await User.find({ _id: userId })
-
-        const encryptedUser = encryption.encrypt(JSON.stringify(user));
+        const { id } = req.headers;
+        
+        const user = await User.findById(userId)
+        const encryptedUser = await encryption.encrypt(id + ';' +JSON.stringify(user));
         res.json({ data: encryptedUser });
     }
-
-
 };

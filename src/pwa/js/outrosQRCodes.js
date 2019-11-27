@@ -2,34 +2,44 @@
  * Função usada para buscar os QR Codes que um usuário leu e atualizar a interface na tela.
  */
 async function buscaOutrosCodigos(){
-    let { data } = await api.get('/qrcodes/outros', { headers: { accessToken } });
+    let data;
+    if(navigator.onLine){
+        const id = localStorage.getItem('encryption_key').split(';')[0];
+        data = (await api.get('/qrcodes/outros', { headers: { accessToken, id } })).data;
+        localStorage.setItem('accesses', data);
+    } else {
+        data = localStorage.getItem('accesses').split(';');
+    }
     data = JSON.parse(decrypt(data.data));
+    
     
     const elemento = document.getElementById('codigos');
     elemento.innerHTML = '<h1 class="text-center">QRCodes que você leu!</h1>';
     data.map(access => {
-        const date = new Date(access._idQRCode.createdAt);
-        elemento.innerHTML += `
-            <div class="row mt-5" id="${access._idQRCode._id}">
-                <div class="col-sm-4 qrcode" onClick="populaModal('${access._id}')" data-toggle="modal" data-target="#modalInfos" style="background-image: url('https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${access._idQRCode._id}&choe=UTF-8')"></div>
-                <div class="col-sm-6 qrcode-details d-flex flex-column justify-content-center">
-                    <b>Data criação</b>${date.toLocaleDateString()}<br>
-                    <b>Lido de</b>${access._idQRCode._idUser.nome} ${access._idQRCode._idUser.sobrenome}<br>
-                </div>
-                <div class="col-sm-2 d-flex flex-column justify-content-center">
-                    <button type="button" class="btn btn-primary" name="botaoDeletar" onclick="deletarQrCode('${access._id}')">
-                        Deletar
-                    </button>
-                </div>
-            </div>  
-            `;
+        if(access._idQRCode){
+            const date = new Date(access._idQRCode.createdAt);
+            elemento.innerHTML += `
+                <div class="row mt-5" id="${access._idQRCode._id}">
+                    <div class="col-sm-4 qrcode" onClick="populaModal('${access._id}')" data-toggle="modal" data-target="#modalInfos" style="background-image: url('https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://simple-hello.ifsc.casa/QRCode.html?_id=${access._idQRCode._id}&choe=UTF-8')"></div>
+                    <div class="col-sm-6 qrcode-details d-flex flex-column justify-content-center">
+                        <b>Data criação</b>${date.toLocaleDateString()}<br>
+                        <b>Lido de</b>${access._idQRCode._idUser.nome} ${access._idQRCode._idUser.sobrenome}<br>
+                    </div>
+                    <div class="col-sm-2 d-flex flex-column justify-content-center">
+                        <button type="button" class="btn btn-primary" name="botaoDeletar" onclick="deletarQrCode('${access._id}')">
+                            Deletar
+                        </button>
+                    </div>
+                </div>  
+                `;
 
-        const campos = document.getElementById(access._idQRCode._id).getElementsByTagName('div')[1];
+            const campos = document.getElementById(access._idQRCode._id).getElementsByTagName('div')[1];
 
-        campos.innerHTML += '<b>Campos</b>';
-        access._idQRCode.permissoes.map(permissao => campos.innerHTML += `${permissao}, `);
+            campos.innerHTML += '<b>Campos</b>';
+            access._idQRCode.permissoes.map(permissao => campos.innerHTML += `${permissao}, `);
 
-        campos.innerHTML = campos.innerHTML.substr(0, campos.innerHTML.length-2);
+            campos.innerHTML = campos.innerHTML.substr(0, campos.innerHTML.length-2);
+        }
     });
 }
 
@@ -52,7 +62,8 @@ async function deletarQrCode(_id){
  * @param {string} _id - id de um AccessCliente do banco de dados.
  */
 async function populaModal(_id){
-    let { data } = await api.get('/qrcodes/info', { headers: { accessToken }, params: { _id } });
+    const id = localStorage.getItem('encryption_key').split(';')[0]
+    let { data } = await api.get('/qrcodes/info', { headers: { accessToken, id }, params: { _id } });
 
     const { user, lastEdited } = JSON.parse(decrypt(data.data));
 

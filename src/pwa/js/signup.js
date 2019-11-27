@@ -26,7 +26,8 @@ async function registraUsuario(){
     let res;
     try{
         const data = encrypt(JSON.stringify({ nome, sobrenome, email, cpf, senha, confirmar_senha }))
-        res = await api.post('/users', { data });
+        const id = localStorage.getItem('encryption_key').split(';')[0];
+        res = await api.post('/users', { data }, { headers: { id } });
     } catch(err){
         if(err.response === 'uje'){
             alert('Usuário já existe!');
