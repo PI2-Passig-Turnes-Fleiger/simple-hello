@@ -1,12 +1,15 @@
-const clinicas = [0, 1, 2, 5, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-const contratos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 21, 22, 30];
-const portarias = [0, 1, 5, 9, 12, 13, 15, 16];
+const clinicas = [2, 5, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+const contratos = [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 21, 22, 30];
+const portarias = [5, 9, 12, 13, 15, 16];
 
 /**
  * Responsável por limpar todas as seleções do formulário, para garantir que os modelos funcionarão corretamente.
  */
 function limpaSelecoes(){
-    todos.forEach(id => document.getElementById(`check${id}`).checked = false);
+    todos.forEach(id => {
+        if(id != 'nome' && id != 'sobrenome')
+            document.getElementById(`check${id}`).checked = false
+        });
 }
 
 /**
