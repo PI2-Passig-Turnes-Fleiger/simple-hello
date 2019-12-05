@@ -27,7 +27,7 @@
 
    2. Projeto foi entregue dentro do prazo?
 
-    Sim, inclusive não houveram entregas insuficientes no decorrer do
+    Sim, inclusive não houve entregas insuficientes no decorrer do
     desenvolvimento.
 
 3. O Projeto
